@@ -1,50 +1,427 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
-import ProductGrid from "../components/ProductGrid.astro";
-import Footer from "../components/Footer.astro";
+import ProductCard from "../components/ProductCard.astro";
+import Badge from "../components/ui/Badge.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Cta from "../components/Cta.astro";
 
-const products = [
+const featuredBeans = [
   {
-    title: "Coffee Grinder",
-    price: "$89",
-    description: "Compact grinder with a clean form factor and smooth daily workflow.",
-    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80",
-    href: "#",
+    title: "Sunda Kintamani",
+    price: "Rp 168K",
+    description: "Bright and clean profile with soft citrus sweetness and a smooth finish.",
+    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Best Overall",
+    roastLevel: "Light Roast",
+    flavorNotes: "Orange peel, honey, almond",
   },
   {
-    title: "Pour Over Set",
-    price: "$49",
-    description: "Simple brewing kit for a calm, focused coffee ritual at home.",
-    image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=1200&q=80",
-    href: "#",
+    title: "Java Signature",
+    price: "Rp 154K",
+    description: "Balanced daily cup with caramel body and a quiet cocoa finish.",
+    image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Most Popular",
+    roastLevel: "Medium Roast",
+    flavorNotes: "Cocoa, caramel, stone fruit",
   },
   {
-    title: "Espresso Machine",
-    price: "$399",
-    description: "A premium machine for users who want stronger visual presence and performance.",
-    image: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80",
-    href: "#",
+    title: "Bali Reserve",
+    price: "Rp 192K",
+    description: "Deeper cup with dark chocolate notes, ideal for espresso and milk drinks.",
+    image: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Best Premium",
+    roastLevel: "Dark Roast",
+    flavorNotes: "Dark chocolate, walnut, spice",
+  },
+  {
+    title: "Flores Bloom",
+    price: "Rp 159K",
+    description: "Rounded sweetness with floral lift and a silky finish.",
+    image: "https://images.unsplash.com/photo-1509785307050-d4066910ec1e?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Value Terbaik",
+    roastLevel: "Medium-Light",
+    flavorNotes: "Jasmine, honey, pear",
+  },
+  {
+    title: "Sulawesi Torch",
+    price: "Rp 176K",
+    description: "Structured, bold, and clean for drinkers who prefer more body.",
+    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Cocok untuk Espresso",
+    roastLevel: "Medium-Dark",
+    flavorNotes: "Cocoa, cedar, brown sugar",
+  },
+  {
+    title: "Aceh Gayo",
+    price: "Rp 164K",
+    description: "Soft acidity with a calm finish, great for pour-over and everyday brew.",
+    image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Best Budget",
+    roastLevel: "Medium Roast",
+    flavorNotes: "Brown sugar, plum, cocoa",
+  },
+];
+
+const categories = [
+  {
+    title: "Single Origin",
+    description: "Pure origin stories for drinkers who want clarity and character.",
+    count: "08 beans",
+  },
+  {
+    title: "Espresso",
+    description: "Bolder roasts with structure, crema, and milk-friendly sweetness.",
+    count: "06 beans",
+  },
+  {
+    title: "Pour Over",
+    description: "Clean and bright profiles that shine in manual brewing.",
+    count: "10 beans",
+  },
+  {
+    title: "Gifts & Sets",
+    description: "Curated bundles for easy gifting and starter kits.",
+    count: "04 sets",
+  },
+];
+
+const guides = [
+  {
+    title: "How to pick the right roast level",
+    description: "A quick guide to help users choose based on taste preference and brew method.",
+    readTime: "4 min read",
+  },
+  {
+    title: "Pour-over basics for better clarity",
+    description: "Simple technique notes that improve extraction without making the process heavy.",
+    readTime: "6 min read",
+  },
+  {
+    title: "Espresso at home without overcomplication",
+    description: "Build a strong home espresso routine with a small, repeatable workflow.",
+    readTime: "5 min read",
+  },
+];
+
+const benefits = [
+  {
+    title: "Freshly roasted",
+    description: "Small batch roasting keeps the profile consistent and the experience premium.",
+  },
+  {
+    title: "Reusable brewing flow",
+    description: "Every section and card is designed as a pattern that can be reused later.",
+  },
+  {
+    title: "Conversion-friendly",
+    description: "Clean hierarchy, subtle CTA, and a layout that stays focused on product intent.",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "The beans are clean, balanced, and easy to recommend for both home brew and espresso.",
+    name: "Nadia Putri",
+    role: "Home brewer",
+  },
+  {
+    quote: "The branding feels premium without being busy. That makes the products stand out immediately.",
+    name: "Raka Pratama",
+    role: "Cafe owner",
+  },
+  {
+    quote: "The light roast profile is bright but still smooth. It feels curated, not generic.",
+    name: "Dewi Lestari",
+    role: "Coffee reviewer",
+  },
+];
+
+const faqItems = [
+  {
+    question: "How fresh are the beans?",
+    answer: "Beans are roasted in small batches so the flavor stays crisp and consistent when shipped.",
+  },
+  {
+    question: "Do you have options for beginners?",
+    answer: "Yes. The product cards highlight roast level and flavor notes to help new buyers choose quickly.",
+  },
+  {
+    question: "Can I use these beans for espresso?",
+    answer: "Yes. The medium and dark profiles are chosen to work well in espresso and milk-based drinks.",
+  },
+  {
+    question: "Is the site mobile-friendly?",
+    answer: "The layout is mobile-first, with stacked grids, large spacing, and lightweight visuals.",
+  },
+  {
+    question: "Does the homepage use heavy JavaScript?",
+    answer: "No. The homepage is static Astro with Tailwind CSS and no sliders or autoplay media.",
+  },
+];
+
+const gallery = [
+  {
+    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80&fm=webp",
+    label: "Roasting",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1000&q=80&fm=webp",
+    label: "Pour over",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1507914372368-b75b417310ea?auto=format&fit=crop&w=1000&q=80&fm=webp",
+    label: "Espresso",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1000&q=80&fm=webp",
+    label: "Brew notes",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=1000&q=80&fm=webp",
+    label: "Origin",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1000&q=80&fm=webp",
+    label: "Packing",
   },
 ];
 ---
 
 <BaseLayout
-  title="Tropic Roastery - Modern Coffee Storefront"
-  description="Minimal modern storefront built with Astro and Tailwind CSS."
+  title="Tropic Roastery | Premium Minimal Coffee Storefront"
+  description="A premium minimal coffee storefront built with Astro and Tailwind CSS. Fast, responsive, SEO-ready, and reusable."
 >
   <main>
     <Hero />
-    <ProductGrid products={products} />
-    <section id="about" class="px-4 py-16">
-      <div class="mx-auto max-w-3xl rounded-3xl border border-neutral-200 bg-white p-8 text-center">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-orange-500">About</p>
-        <h2 class="mt-3 text-2xl font-semibold tracking-tight text-neutral-900">Simple setup, clear structure</h2>
-        <p class="mt-4 text-sm leading-7 text-neutral-500">
-          This starter keeps the layout focused on hero, product grid, and footer so the foundation stays lean.
-        </p>
+
+    <section id="story" class="ds-section pt-0">
+      <div class="ds-container">
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div class="space-y-5">
+            <SectionHeader
+              kicker="Brand story"
+              title="A calm coffee brand with a clear product story."
+              description="Tropic Roastery is built around minimal presentation, transparent origin, and a clean shopping experience that keeps the beans front and center."
+            />
+            <div class="flex flex-wrap gap-3 pt-2">
+              <Badge label="Best Choice" />
+              <Badge label="Cocok untuk Pemula" tone="neutral" />
+            </div>
+          </div>
+
+          <div class="ds-surface overflow-hidden p-0">
+            <img
+              src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1400&q=80&fm=webp"
+              alt="Minimal coffee roastery interior"
+              class="aspect-[4/3] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="grid gap-4 p-6 sm:grid-cols-3">
+              <div>
+                <p class="text-2xl font-semibold text-neutral-900">24h</p>
+                <p class="text-sm text-neutral-500">Roast to ship</p>
+              </div>
+              <div>
+                <p class="text-2xl font-semibold text-neutral-900">6</p>
+                <p class="text-sm text-neutral-500">Core collections</p>
+              </div>
+              <div>
+                <p class="text-2xl font-semibold text-neutral-900">1</p>
+                <p class="text-sm text-neutral-500">Clear brand system</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-    <Footer />
+
+    <section id="beans" class="ds-section pt-0">
+      <div class="ds-container">
+        <SectionHeader
+          kicker="Featured beans"
+          title="Coffee cards designed to convert without clutter."
+          description="Every card is reusable, carries flavor signals, and keeps the product story visible on mobile and desktop."
+        />
+        <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {featuredBeans.map((bean) => <ProductCard {...bean} />)}
+        </div>
+      </div>
+    </section>
+
+    <section id="categories" class="ds-section pt-0">
+      <div class="ds-container">
+        <SectionHeader
+          kicker="Categories"
+          title="Browse by brewing intent."
+          description="Simple category cards keep the structure clear and make the page easier to scan."
+        />
+        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {categories.map((category) => (
+            <article class="ds-card ds-card-hover p-6">
+              <p class="ds-kicker">{category.count}</p>
+              <h3 class="mt-3 text-xl font-semibold tracking-tight text-neutral-900">{category.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-neutral-500">{category.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="guides" class="ds-section pt-0">
+      <div class="ds-container">
+        <SectionHeader
+          kicker="Brew guides"
+          title="Short, useful brewing content."
+          description="Educational content helps search traffic while still moving readers toward products."
+        />
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+          {guides.map((guide, index) => (
+            <article class="ds-surface p-6">
+              <p class="ds-kicker">0{index + 1}</p>
+              <h3 class="mt-3 text-xl font-semibold tracking-tight text-neutral-900">{guide.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-neutral-500">{guide.description}</p>
+              <p class="mt-5 text-sm font-medium text-orange-500">{guide.readTime}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="ds-section pt-0">
+      <div class="ds-container">
+        <SectionHeader
+          kicker="Why choose us"
+          title="Built to feel premium, but easy to understand."
+          description="The layout is intentionally calm. Each block exists to improve scanning, trust, or conversion."
+        />
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+          {benefits.map((benefit) => (
+            <article class="ds-card ds-card-hover p-6">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-lg font-semibold text-orange-500">
+                OK
+              </div>
+              <h3 class="mt-4 text-xl font-semibold tracking-tight text-neutral-900">{benefit.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-neutral-500">{benefit.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="ds-section pt-0">
+      <div class="ds-container">
+        <SectionHeader
+          kicker="Testimonials"
+          title="Proof from coffee drinkers."
+          description="Short testimonials keep the section light while still building trust."
+        />
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <figure class="ds-surface p-6">
+              <div class="flex gap-1 text-orange-500" aria-hidden="true">
+                <span>5/5</span>
+              </div>
+              <blockquote class="mt-4 text-sm leading-7 text-neutral-700">
+                "{testimonial.quote}"
+              </blockquote>
+              <figcaption class="mt-5">
+                <p class="font-medium text-neutral-900">{testimonial.name}</p>
+                <p class="text-sm text-neutral-500">{testimonial.role}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="ds-section pt-0">
+      <div class="ds-container">
+        <SectionHeader
+          kicker="Gallery"
+          title="Visual cues that keep the brand premium."
+          description="A light gallery gives the page atmosphere without relying on animation or video."
+        />
+        <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
+          {gallery.map((item) => (
+            <figure class="group overflow-hidden rounded-3xl border border-neutral-200 bg-white">
+              <img
+                src={item.image}
+                alt={item.label}
+                class="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="px-4 py-3 text-sm text-neutral-500">{item.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter" class="ds-section pt-0">
+      <div class="ds-container">
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeader
+              kicker="Newsletter"
+              title="Get brewing notes and new bean drops."
+              description="A simple email capture section keeps the homepage conversion-friendly without adding clutter."
+            />
+          </div>
+
+          <form class="ds-surface p-6 sm:p-8" action="#" method="post">
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium text-neutral-900">Email address</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                class="w-full rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm text-neutral-900 outline-none transition placeholder:text-neutral-400 focus:border-orange-400"
+              />
+            </label>
+            <div class="mt-4 flex flex-col gap-3 sm:flex-row">
+              <button type="submit" class="ds-button-primary w-full sm:w-auto">
+                Subscribe
+              </button>
+              <p class="text-sm leading-7 text-neutral-500 sm:self-center">
+                No spam. Only roast updates and useful brewing notes.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <Cta
+      primaryHref="#beans"
+      secondaryHref="#newsletter"
+    />
+
+    <section id="faq" class="ds-section pt-0">
+      <div class="ds-container">
+        <SectionHeader
+          kicker="FAQ"
+          title="Common questions, answered clearly."
+          description="Expandable details keep the page lightweight and easy to scan."
+        />
+        <div class="mt-10 space-y-4">
+          {faqItems.map((item) => (
+            <details class="ds-surface group p-6">
+              <summary class="cursor-pointer list-none text-base font-medium text-neutral-900">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-7 text-neutral-500">
+                {item.answer}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SiteFooter />
   </main>
 </BaseLayout>

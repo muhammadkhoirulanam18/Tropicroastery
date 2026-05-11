@@ -1,0 +1,17 @@
+---
+const {
+  href = "#",
+  label,
+  variant = "primary",
+} = Astro.props;
+
+const classes = {
+  primary: "ds-button-primary",
+  secondary: "ds-button-secondary",
+};
+---
+
+<a href={href} class={classes[variant] ?? classes.primary}>
+  {label}
+</a>
+

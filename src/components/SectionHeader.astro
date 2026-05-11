@@ -1,0 +1,17 @@
+---
+const {
+  kicker,
+  title,
+  description,
+  align = "left",
+} = Astro.props;
+
+const alignClass = align === "center" ? "text-center items-center" : "text-left items-start";
+---
+
+<header class={`flex flex-col gap-3 ${alignClass}`}>
+  {kicker ? <p class="ds-kicker">{kicker}</p> : null}
+  <h2 class="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">{title}</h2>
+  {description ? <p class="max-w-2xl text-sm leading-7 text-neutral-500 sm:text-base">{description}</p> : null}
+</header>
+

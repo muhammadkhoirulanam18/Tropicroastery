@@ -1,0 +1,14 @@
+---
+const { label, tone = "accent" } = Astro.props;
+
+const toneClasses = {
+  accent: "border-orange-200 bg-orange-50 text-orange-600",
+  neutral: "border-neutral-200 bg-white text-neutral-600",
+  success: "border-emerald-200 bg-emerald-50 text-emerald-700",
+};
+---
+
+<span class={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${toneClasses[tone] ?? toneClasses.accent}`}>
+  {label}
+</span>
+

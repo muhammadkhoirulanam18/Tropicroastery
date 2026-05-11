@@ -1,29 +1,36 @@
 ---
+import Badge from "./ui/Badge.astro";
+import Button from "./ui/Button.astro";
+
 const {
   title,
   price,
   description,
   image,
-  href = "#",
+  href = "#contact",
+  badge = "Most Popular",
+  roastLevel = "Medium Roast",
+  flavorNotes = "Chocolate, caramel, citrus",
 } = Astro.props;
 ---
 
-<article class="overflow-hidden rounded-3xl border border-neutral-200 bg-white transition hover:-translate-y-1 hover:shadow-lg">
+<article class="ds-card ds-card-hover">
   <a href={href} class="block">
     <img src={image} alt={title} class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
   </a>
-  <div class="space-y-4 p-6">
+  <div class="space-y-5 p-6">
     <div class="flex items-start justify-between gap-4">
-      <h3 class="text-base font-medium text-neutral-900">{title}</h3>
+      <div class="space-y-2">
+        <Badge label={badge} />
+        <h3 class="text-base font-medium text-neutral-900">{title}</h3>
+      </div>
       <span class="shrink-0 text-sm font-semibold text-orange-500">{price}</span>
     </div>
     <p class="text-sm leading-6 text-neutral-500">{description}</p>
-    <a
-      href={href}
-      class="inline-flex items-center justify-center rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
-    >
-      Cek Harga
-    </a>
+    <div class="flex flex-wrap gap-2">
+      <span class="ds-chip">{roastLevel}</span>
+      <span class="ds-chip">{flavorNotes}</span>
+    </div>
+    <Button href={href} label="Cek Harga" variant="primary" />
   </div>
 </article>
-

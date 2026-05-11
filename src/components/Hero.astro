@@ -1,39 +1,45 @@
 ---
+import Badge from "./ui/Badge.astro";
+import Button from "./ui/Button.astro";
+
 const {
-  eyebrow = "Coffee storefront",
-  title = "A sleek Astro storefront for modern coffee products.",
-  description = "Minimal layout, clean spacing, and a focused product experience built for conversion.",
-  primaryHref = "#products",
-  primaryLabel = "Lihat Koleksi",
-  secondaryHref = "/about",
-  secondaryLabel = "Tentang Toko",
+  eyebrow = "Specialty coffee",
+  title = "Premium minimal coffee storefront for Tropic Roastery.",
+  description = "Clean layout, premium whitespace, and reusable product cards built to showcase beans, brewing, and brand story without heavy JavaScript.",
+  primaryHref = "#beans",
+  primaryLabel = "Lihat Beans",
+  secondaryHref = "#story",
+  secondaryLabel = "Brand Story",
 } = Astro.props;
+
+const stats = [
+  { value: "12+", label: "Single origin" },
+  { value: "48h", label: "Fresh roast" },
+  { value: "4.9", label: "Avg rating" },
+];
 ---
 
-<section class="px-4 py-24 md:py-32">
-  <div class="mx-auto max-w-3xl text-center">
-    <p class="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-orange-500 shadow-sm">
-      {eyebrow}
-    </p>
-    <h1 class="mt-8 text-5xl font-semibold tracking-tight text-neutral-900 md:text-6xl md:leading-tight">
+<section class="ds-section">
+  <div class="ds-container text-center">
+    <Badge label={eyebrow} />
+    <h1 class="ds-heading mx-auto mt-8 max-w-4xl md:leading-tight">
       {title}
     </h1>
-    <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-neutral-500 md:text-base">
+    <p class="ds-subheading mx-auto mt-5 max-w-2xl">
       {description}
     </p>
     <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-      <a
-        href={primaryHref}
-        class="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600"
-      >
-        {primaryLabel}
-      </a>
-      <a
-        href={secondaryHref}
-        class="inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white px-6 py-3 text-sm font-semibold text-neutral-900 transition hover:border-neutral-300 hover:bg-neutral-50"
-      >
-        {secondaryLabel}
-      </a>
+      <Button href={primaryHref} label={primaryLabel} variant="primary" />
+      <Button href={secondaryHref} label={secondaryLabel} variant="secondary" />
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-3">
+      {stats.map((stat) => (
+        <div class="ds-surface px-6 py-5 text-left">
+          <p class="text-2xl font-semibold tracking-tight text-neutral-900">{stat.value}</p>
+          <p class="mt-1 text-sm text-neutral-500">{stat.label}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>

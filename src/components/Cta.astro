@@ -1,0 +1,33 @@
+---
+const {
+  eyebrow = "Final Call",
+  title = "Ready to try Tropic Roastery?",
+  description = "The homepage is now a static, premium storefront with clear hierarchy, reusable components, and a layout that stays fast on mobile.",
+  primaryHref = "#beans",
+  primaryLabel = "View Beans",
+  secondaryHref = "#newsletter",
+  secondaryLabel = "Join Newsletter",
+} = Astro.props;
+---
+
+<section class="ds-section pt-0">
+  <div class="ds-container">
+    <div class="ds-surface px-8 py-12 text-center md:px-12">
+      <p class="ds-kicker">{eyebrow}</p>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
+        {title}
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-neutral-500">
+        {description}
+      </p>
+      <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+        <a href={primaryHref} class="ds-button-primary">
+          {primaryLabel}
+        </a>
+        <a href={secondaryHref} class="ds-button-secondary">
+          {secondaryLabel}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
