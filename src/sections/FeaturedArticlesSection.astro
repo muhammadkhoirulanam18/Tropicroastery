@@ -1,0 +1,84 @@
+---
+import Container from "../components/Container.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+interface Article {
+  title: string;
+  excerpt: string;
+  href: string;
+  category: string;
+  date: string;
+  image?: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  articles?: Article[];
+}
+
+const defaultArticles: Article[] = [
+  {
+    title: "Cara Menyeduh Kopi V60: Panduan Lengkap untuk Hasil Maksimal",
+    excerpt: "Pelajari teknik menyeduh kopi V60 yang benar untuk mengeluarkan profil rasa yang bersih, cerah, dan aromatik dari biji kopi pilihan Anda.",
+    href: "/blog/cara-menyeduh-kopi-v60",
+    category: "Tutorial Seduh",
+    date: "11 Mei 2026",
+    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=75&fm=webp"
+  },
+  {
+    title: "Perbedaan Kopi Arabika dan Robusta: Mana yang Lebih Cocok untuk Anda?",
+    excerpt: "Pahami perbedaan mendasar antara kopi Arabika dan Robusta mulai dari rasa, kadar kafein, hingga harga agar tidak salah pilih.",
+    href: "/blog/perbedaan-kopi-arabika-dan-robusta",
+    category: "Pengetahuan Kopi",
+    date: "11 Mei 2026",
+    image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=800&q=75&fm=webp"
+  },
+  {
+    title: "Cara Menyimpan Biji Kopi agar Tetap Segar Selama Berbulan-bulan",
+    excerpt: "Jangan biarkan kopi mahal Anda menjadi apek. Ikuti panduan cara menyimpan biji kopi yang benar untuk menjaga aroma dan rasa.",
+    href: "/blog/cara-menyimpan-biji-kopi",
+    category: "Tips & Trik",
+    date: "11 Mei 2026",
+    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=75&fm=webp"
+  }
+];
+
+const {
+  title = "Brewing Notes & Stories",
+  description = "Eksplorasi dunia kopi melalui panduan seduh, ulasan produk, dan cerita dari balik meja sangrai kami.",
+  articles = defaultArticles
+} = Astro.props;
+---
+
+<section class="border-t border-stone-200 py-16 md:py-24">
+  <Container as="div">
+    <div class="flex flex-col gap-16">
+      <!-- Section Header -->
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-stone-400">Journal</p>
+        <h2 class="mt-4 font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
+          {title}
+        </h2>
+        <p class="mt-6 text-lg text-stone-500 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="grid gap-x-10 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+        {articles.map((article) => (
+          <ArticleCard {...article} />
+        ))}
+      </div>
+
+      <!-- Section Footer -->
+      <div class="flex justify-start">
+        <a href="/blog" class="group inline-flex items-center gap-2 text-sm font-bold text-stone-900 underline underline-offset-8 hover:text-orange-600 transition-colors">
+          Lihat Semua Artikel
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>

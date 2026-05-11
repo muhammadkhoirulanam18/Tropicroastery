@@ -1,0 +1,30 @@
+---
+import Container from "../components/Container.astro";
+
+const stats = [
+  { label: "Origin", value: "12+", sub: "Wilayah asal" },
+  { label: "Roasted", value: "48 jam", sub: "Segar sebelum dikirim" },
+  { label: "Rating", value: "4.9 ★", sub: "Rata-rata pembeli" },
+  { label: "Process", value: "Small batch", sub: "Kontrol kualitas ketat" },
+];
+---
+
+<section class="border-t border-stone-200 py-16 bg-white">
+  <Container as="div">
+    <dl class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      {stats.map((stat) => (
+        <div class="flex flex-col">
+          <dt class="text-xs font-semibold uppercase tracking-widest text-stone-400">
+            {stat.label}
+          </dt>
+          <dd class="mt-2 text-2xl font-bold text-stone-900 md:text-3xl">
+            {stat.value}
+          </dd>
+          <dd class="mt-1 text-sm text-stone-500">
+            {stat.sub}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </Container>
+</section>

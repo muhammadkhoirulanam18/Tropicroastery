@@ -1,124 +1,17 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Container from "../components/Container.astro";
-import Badge from "../components/ui/Badge.astro";
-import Button from "../components/ui/Button.astro";
+import HeroSection from "../sections/HeroSection.astro";
+import FeaturedArticlesSection from "../sections/FeaturedArticlesSection.astro";
+import CategoriesSection from "../sections/CategoriesSection.astro";
+import CTASection from "../sections/CTASection.astro";
 ---
 
 <MainLayout
   title="Tropic Roastery — Specialty Coffee dari Nusantara"
   description="Kopi single origin pilihan dari dataran tinggi Indonesia. Disangrai kecil, dikirim segar, dinikmati sepenuhnya."
 >
-  <!-- Hero -->
-  <section class="py-24 md:py-36">
-    <Container as="div" narrow>
-      <div class="space-y-8">
-
-        <!-- Small label -->
-        <Badge label="Specialty Coffee · Single Origin" tone="neutral" />
-
-        <!-- Large heading -->
-        <h1 class="text-5xl font-bold tracking-tight text-stone-900 leading-tight md:text-6xl lg:text-7xl">
-          Kopi yang<br class="hidden sm:block" />
-          berbicara sendiri.
-        </h1>
-
-        <!-- Short description -->
-        <p class="max-w-lg text-lg text-stone-500 leading-relaxed">
-          Kami memilih, menyangrai, dan mengirim biji kopi terbaik dari Kintamani, Gayo, hingga Toraja — langsung ke tangan Anda.
-        </p>
-
-        <!-- CTA -->
-        <div class="pt-2">
-          <Button href="/best/kopi-arabika-terbaik" label="Lihat Pilihan Kopi" variant="primary" />
-        </div>
-
-      </div>
-    </Container>
-  </section>
-
-  <!-- Divider with origin stats -->
-  <section class="border-t border-stone-200 py-16">
-    <Container as="div">
-      <dl class="grid grid-cols-2 gap-8 md:grid-cols-4">
-        <div>
-          <dt class="text-xs font-semibold uppercase tracking-widest text-stone-400">Origin</dt>
-          <dd class="mt-2 text-2xl font-bold text-stone-900">12+</dd>
-          <dd class="mt-1 text-sm text-stone-500">Wilayah asal</dd>
-        </div>
-        <div>
-          <dt class="text-xs font-semibold uppercase tracking-widest text-stone-400">Roasted</dt>
-          <dd class="mt-2 text-2xl font-bold text-stone-900">48 jam</dd>
-          <dd class="mt-1 text-sm text-stone-500">Segar sebelum dikirim</dd>
-        </div>
-        <div>
-          <dt class="text-xs font-semibold uppercase tracking-widest text-stone-400">Rating</dt>
-          <dd class="mt-2 text-2xl font-bold text-stone-900">4.9 ★</dd>
-          <dd class="mt-1 text-sm text-stone-500">Rata-rata pembeli</dd>
-        </div>
-        <div>
-          <dt class="text-xs font-semibold uppercase tracking-widest text-stone-400">Process</dt>
-          <dd class="mt-2 text-2xl font-bold text-stone-900">Small batch</dd>
-          <dd class="mt-1 text-sm text-stone-500">Kontrol kualitas ketat</dd>
-        </div>
-      </dl>
-    </Container>
-  </section>
-
-  <!-- Editorial image strip -->
-  <section class="border-t border-stone-200 py-16">
-    <Container as="div">
-      <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
-        <figure class="overflow-hidden rounded-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=75&fm=webp"
-            alt="Coffee beans roasting"
-            class="aspect-square w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <figure class="overflow-hidden rounded-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=75&fm=webp"
-            alt="Pour over brewing"
-            class="aspect-square w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <figure class="overflow-hidden rounded-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=75&fm=webp"
-            alt="Coffee cup close up"
-            class="aspect-square w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <figure class="overflow-hidden rounded-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=800&q=75&fm=webp"
-            alt="Specialty coffee origin"
-            class="aspect-square w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-      </div>
-    </Container>
-  </section>
-
-  <!-- Bottom CTA strip -->
-  <section class="border-t border-stone-200 py-16">
-    <Container as="div">
-      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div class="space-y-1">
-          <p class="text-xs font-semibold uppercase tracking-widest text-stone-400">Mulai dari mana?</p>
-          <p class="text-xl font-semibold text-stone-900">Temukan kopi yang cocok untuk Anda.</p>
-        </div>
-        <Button href="/best/kopi-arabika-terbaik" label="Lihat Rekomendasi" variant="primary" />
-      </div>
-    </Container>
-  </section>
+  <HeroSection />
+  <FeaturedArticlesSection />
+  <CategoriesSection />
+  <CTASection />
 </MainLayout>

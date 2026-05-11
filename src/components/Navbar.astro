@@ -3,11 +3,11 @@
 import Container from "./Container.astro";
 
 const links = [
-  { href: "#story", label: "Story" },
-  { href: "#beans", label: "Beans" },
-  { href: "#guides", label: "Guides" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/best/kopi-arabika-terbaik", label: "Beans" },
+  { href: "/blog", label: "Journal" },
+  { href: "/about", label: "Story" },
+  { href: "/contact", label: "Contact" },
 ];
 ---
 
@@ -20,7 +20,7 @@ const links = [
         </div>
         <div class="leading-tight">
           <p class="text-sm font-semibold text-neutral-900">Tropic Roastery</p>
-          <p class="text-xs text-neutral-500">Astro storefront</p>
+          <p class="text-xs text-neutral-500">Premium Coffee</p>
         </div>
       </a>
 
@@ -35,7 +35,7 @@ const links = [
         ))}
       </div>
 
-      <a href="#beans" class="ds-button-primary hidden md:inline-flex">
+      <a href="/best/kopi-arabika-terbaik" class="ds-button-primary hidden md:inline-flex">
         Lihat Beans
       </a>
 
@@ -54,7 +54,7 @@ const links = [
               </a>
             ))}
           </div>
-          <a href="#beans" class="ds-button-primary mt-2 w-full">
+          <a href="/best/kopi-arabika-terbaik" class="ds-button-primary mt-2 w-full">
             Lihat Beans
           </a>
         </div>

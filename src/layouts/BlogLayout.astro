@@ -1,0 +1,81 @@
+---
+import MainLayout from "./MainLayout.astro";
+import Container from "../components/Container.astro";
+import Badge from "../components/ui/Badge.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: string;
+  readTime: string;
+  category?: string;
+  ogImage?: string;
+}
+
+const { title, description, publishDate, readTime, category = "Brewing Guide", ogImage } = Astro.props;
+---
+
+<MainLayout title={title} description={description} ogImage={ogImage}>
+  <article class="py-16 md:py-24">
+    <Container as="div" narrow>
+      <!-- Header -->
+      <header class="space-y-6 text-center">
+        <Badge label={category} tone="accent" />
+        <h1 class="font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
+          {title}
+        </h1>
+        <div class="flex items-center justify-center gap-4 text-sm text-stone-500">
+          <time datetime={publishDate}>{publishDate}</time>
+          <span>•</span>
+          <span>{readTime}</span>
+        </div>
+        <p class="mx-auto max-w-2xl text-lg text-stone-600">
+          {description}
+        </p>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-stone prose-lg mx-auto mt-16 max-w-3xl prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline">
+        <slot />
+      </div>
+
+      <!-- Footer CTA -->
+      <footer class="mt-24 border-t border-stone-200 pt-16">
+        <div class="rounded-3xl bg-stone-900 p-8 text-center text-white sm:p-12">
+          <h2 class="text-2xl font-bold">Siap menyeduh kopi terbaik?</h2>
+          <p class="mt-4 text-stone-400">Temukan biji kopi pilihan kami yang cocok untuk metode V60 dan lainnya.</p>
+          <div class="mt-8 flex justify-center">
+            <a href="/best/kopi-arabika-terbaik" class="ds-button-primary">
+              Cek Biji Kopi Terbaik
+            </a>
+          </div>
+        </div>
+      </footer>
+    </Container>
+  </article>
+</MainLayout>
+
+<style is:global>
+  /* Basic typography for long-form content */
+  .prose p {
+    @apply mb-6 leading-relaxed text-stone-700;
+  }
+  .prose h2 {
+    @apply mb-4 mt-12 text-3xl font-bold text-stone-900;
+  }
+  .prose h3 {
+    @apply mb-4 mt-8 text-2xl font-bold text-stone-900;
+  }
+  .prose ul, .prose ol {
+    @apply mb-8 ml-6 space-y-3;
+  }
+  .prose li {
+    @apply text-stone-700;
+  }
+  .prose strong {
+    @apply font-semibold text-stone-900;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-orange-500 pl-6 italic text-stone-600 my-10;
+  }
+</style>

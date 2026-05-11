@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  href: string;
+  category?: string;
+  date?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const {
+  title,
+  excerpt,
+  href,
+  category = "Kopi",
+  date,
+  image,
+  imageAlt = title,
+} = Astro.props;
+---
+
+<article class="group flex flex-col gap-5">
+  <!-- Image -->
+  <a href={href} class="block overflow-hidden rounded-2xl bg-stone-100" tabindex="-1" aria-hidden="true">
+    {image ? (
+      <img
+        src={image}
+        alt={imageAlt}
+        class="aspect-[16/9] w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <!-- Placeholder -->
+      <div class="aspect-[16/9] w-full bg-gradient-to-br from-stone-200 to-stone-300 flex items-end p-5">
+        <span class="text-xs font-semibold uppercase tracking-widest text-stone-500">Tropic Roastery</span>
+      </div>
+    )}
+  </a>
+
+  <!-- Meta -->
+  <div class="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-stone-400">
+    <span class="text-orange-600">{category}</span>
+    {date && (
+      <>
+        <span>·</span>
+        <time datetime={date}>{date}</time>
+      </>
+    )}
+  </div>
+
+  <!-- Title -->
+  <h3 class="text-xl font-bold leading-snug tracking-tight text-stone-900 md:text-2xl">
+    <a href={href} class="hover:text-orange-600 transition-colors duration-150">
+      {title}
+    </a>
+  </h3>
+
+  <!-- Excerpt -->
+  <p class="text-stone-500 leading-relaxed line-clamp-3">
+    {excerpt}
+  </p>
+
+  <!-- Read link -->
+  <a
+    href={href}
+    class="inline-flex items-center gap-2 text-sm font-bold text-stone-900 underline underline-offset-4 hover:text-orange-600 transition-colors duration-150"
+    aria-label={`Baca artikel: ${title}`}
+  >
+    Baca Artikel
+    <span aria-hidden="true">→</span>
+  </a>
+</article>

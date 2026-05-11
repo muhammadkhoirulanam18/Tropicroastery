@@ -1,0 +1,53 @@
+---
+import Container from "../components/Container.astro";
+import CategoryCard from "../components/CategoryCard.astro";
+
+const categories = [
+  {
+    name: "Single Origin",
+    description: "Kopi murni dari satu wilayah untuk karakter rasa yang spesifik dan unik.",
+    href: "/best/kopi-arabika-terbaik",
+    count: "08 Beans"
+  },
+  {
+    name: "Espresso Roast",
+    description: "Sangrai lebih gelap dengan body tebal, ideal untuk mesin espresso dan susu.",
+    href: "/best/kopi-arabika-terbaik",
+    count: "06 Beans"
+  },
+  {
+    name: "Manual Brew",
+    description: "Profil rasa cerah dan kompleks, dikurasi khusus untuk V60 dan filter.",
+    href: "/best/kopi-arabika-terbaik",
+    count: "10 Beans"
+  },
+  {
+    name: "Gifts & Sets",
+    description: "Paket kurasi untuk kado spesial atau mencoba berbagai varian sekaligus.",
+    href: "/best/kopi-arabika-terbaik",
+    count: "04 Sets"
+  }
+];
+---
+
+<section class="border-t border-stone-200 py-16 md:py-24">
+  <Container as="div">
+    <div class="flex flex-col gap-16">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-stone-400">Categories</p>
+        <h2 class="mt-4 font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
+          Browse by Brewing Intent
+        </h2>
+        <p class="mt-6 text-lg text-stone-500 leading-relaxed">
+          Temukan biji kopi yang tepat berdasarkan metode seduh favorit Anda atau eksplorasi rasa baru dari koleksi pilihan kami.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {categories.map((category) => (
+          <CategoryCard {...category} />
+        ))}
+      </div>
+    </div>
+  </Container>
+</section>

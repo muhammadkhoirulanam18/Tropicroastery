@@ -1,0 +1,95 @@
+---
+import Container from "../components/Container.astro";
+import ProductCard from "../components/ProductCard.astro";
+
+interface Product {
+  title: string;
+  price: string;
+  description: string;
+  image: string;
+  badge: string;
+  roastLevel: string;
+  flavorNotes: string;
+  rating: number;
+  href: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  products?: Product[];
+}
+
+const defaultProducts: Product[] = [
+  {
+    title: "Sunda Kintamani",
+    price: "Rp 185.000",
+    description: "Kopi Arabika terbaik dengan profil rasa yang bersih, citrusy, dan body yang ringan.",
+    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=75&fm=webp",
+    badge: "Best Overall",
+    roastLevel: "Light Roast",
+    flavorNotes: "Orange, Honey, Floral",
+    rating: 4.9,
+    href: "/review/kintamani-premium"
+  },
+  {
+    title: "Java Signature",
+    price: "Rp 154.000",
+    description: "Balanced daily cup with caramel body and a quiet cocoa finish.",
+    image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=800&q=75&fm=webp",
+    badge: "Most Popular",
+    roastLevel: "Medium Roast",
+    flavorNotes: "Cocoa, Caramel, Stone Fruit",
+    rating: 4.8,
+    href: "/review/java-signature"
+  },
+  {
+    title: "Bali Reserve",
+    price: "Rp 192.000",
+    description: "Deeper cup with dark chocolate notes, ideal for espresso and milk drinks.",
+    image: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=800&q=75&fm=webp",
+    badge: "Best Premium",
+    roastLevel: "Dark Roast",
+    flavorNotes: "Dark Chocolate, Walnut, Spice",
+    rating: 5.0,
+    href: "/best/kopi-arabika-terbaik"
+  }
+];
+
+const {
+  title = "Our Curated Beans",
+  description = "Biji kopi pilihan yang kami sangrai dalam batch kecil untuk menjaga kesegaran dan karakter rasa yang unik.",
+  products = defaultProducts
+} = Astro.props;
+---
+
+<section class="border-t border-stone-200 py-24 md:py-32">
+  <Container as="div">
+    <div class="flex flex-col gap-16">
+      <!-- Section Header -->
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-stone-400">Shop</p>
+        <h2 class="mt-4 font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
+          {title}
+        </h2>
+        <p class="mt-6 text-lg text-stone-500 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => (
+          <ProductCard {...product} />
+        ))}
+      </div>
+
+      <!-- Section Footer -->
+      <div class="flex justify-start">
+        <a href="/best/kopi-arabika-terbaik" class="ds-button-primary">
+          Cek Semua Beans
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>

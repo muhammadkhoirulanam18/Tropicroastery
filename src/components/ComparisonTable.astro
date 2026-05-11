@@ -1,0 +1,43 @@
+---
+interface ComparisonRow {
+  label: string;
+  productA: string;
+  productB: string;
+  winner?: "A" | "B" | "Draw";
+}
+
+interface Props {
+  productAName: string;
+  productBName: string;
+  rows: ComparisonRow[];
+}
+
+const { productAName, productBName, rows } = Astro.props;
+---
+
+<div class="overflow-x-auto rounded-3xl border border-stone-200 bg-white shadow-sm">
+  <table class="w-full text-left border-collapse">
+    <thead>
+      <tr class="bg-stone-50/50">
+        <th class="px-6 py-5 text-sm font-semibold text-stone-400 uppercase tracking-widest">Fitur</th>
+        <th class="px-6 py-5 text-base font-bold text-stone-900">{productAName}</th>
+        <th class="px-6 py-5 text-base font-bold text-stone-900">{productBName}</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-stone-100">
+      {rows.map((row) => (
+        <tr>
+          <td class="px-6 py-4 text-sm font-medium text-stone-500">{row.label}</td>
+          <td class={`px-6 py-4 text-sm ${row.winner === "A" ? "font-semibold text-orange-600 bg-orange-50/30" : "text-stone-700"}`}>
+            {row.productA}
+            {row.winner === "A" && <span class="ml-2 inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">WINNER</span>}
+          </td>
+          <td class={`px-6 py-4 text-sm ${row.winner === "B" ? "font-semibold text-orange-600 bg-orange-50/30" : "text-stone-700"}`}>
+            {row.productB}
+            {row.winner === "B" && <span class="ml-2 inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">WINNER</span>}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

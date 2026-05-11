@@ -1,0 +1,138 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/Container.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Button from "../../components/ui/Button.astro";
+
+const productA = {
+  name: "Kintamani Arabica",
+  tagline: "Bright & Citrusy",
+  image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80&fm=webp",
+  href: "/review/kintamani-premium"
+};
+
+const productB = {
+  name: "Java Signature",
+  tagline: "Balanced & Chocolatey",
+  image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=800&q=80&fm=webp",
+  href: "/review/java-signature"
+};
+
+const comparisonRows = [
+  { label: "Profil Rasa", productA: "Jeruk, Madu, Floral", productB: "Cokelat, Karamel, Nutty", winner: "Draw" },
+  { label: "Tingkat Keasaman", productA: "Tinggi (Bright)", productB: "Rendah (Smooth)", winner: "A" },
+  { label: "Body", productA: "Light (Teh-like)", productB: "Medium to Full", winner: "B" },
+  { label: "Metode Terbaik", productA: "V60, Pour Over", productB: "Espresso, Tubruk, Milk", winner: "Draw" },
+  { label: "Tingkat Roasting", productA: "Light to Medium", productB: "Medium to Dark", winner: "Draw" },
+  { label: "Harga", productA: "Rp 185.000 / 250g", productB: "Rp 154.000 / 250g", winner: "B" }
+];
+
+const winner = productA; // Choosing Kintamani as overall winner for this scenario (Quality)
+---
+
+<MainLayout 
+  title="Kintamani vs Java Signature: Mana Biji Kopi yang Lebih Bagus?"
+  description="Bingung pilih antara Kintamani yang cerah atau Java yang seimbang? Simak perbandingan lengkapnya di sini untuk menemukan kopi yang paling pas buat Anda."
+>
+  <section class="py-24 md:py-36">
+    <Container as="div">
+      <header class="text-center">
+        <Badge label="Head to Head Comparison" tone="accent" />
+        <h1 class="mt-6 font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
+          {productA.name} <span class="text-stone-300">vs</span> {productB.name}
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-stone-500">
+          Dua primadona kopi nusantara dengan karakter yang bertolak belakang. Temukan mana yang paling cocok dengan selera seduh Anda.
+        </p>
+      </header>
+
+      <!-- Head to Head Cards -->
+      <div class="mt-20 grid gap-8 md:grid-cols-2">
+        <div class="rounded-[2.5rem] border border-stone-200 bg-white p-8 text-center transition hover:shadow-xl">
+          <img src={productA.image} alt={productA.name} class="aspect-square w-full rounded-3xl object-cover" />
+          <h2 class="mt-6 text-2xl font-bold text-stone-900">{productA.name}</h2>
+          <p class="text-orange-600 font-medium">{productA.tagline}</p>
+          <div class="mt-6 flex flex-col gap-3">
+            <Button href={productA.href} label="Baca Review" variant="outline" />
+            <Button href="#beli-a" label="Beli Sekarang" variant="primary" />
+          </div>
+        </div>
+
+        <div class="rounded-[2.5rem] border border-stone-200 bg-white p-8 text-center transition hover:shadow-xl">
+          <img src={productB.image} alt={productB.name} class="aspect-square w-full rounded-3xl object-cover" />
+          <h2 class="mt-6 text-2xl font-bold text-stone-900">{productB.name}</h2>
+          <p class="text-orange-600 font-medium">{productB.tagline}</p>
+          <div class="mt-6 flex flex-col gap-3">
+            <Button href={productB.href} label="Baca Review" variant="outline" />
+            <Button href="#beli-b" label="Beli Sekarang" variant="primary" />
+          </div>
+        </div>
+      </div>
+
+      <!-- The Verdict (Clear Winner) -->
+      <div class="mt-24 rounded-[3rem] bg-stone-900 p-8 text-center text-white sm:p-16">
+        <Badge label="The Verdict" tone="accent" />
+        <h2 class="mt-6 text-3xl font-bold md:text-4xl">Pemenang Keseluruhan: <span class="text-orange-500">{winner.name}</span></h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-stone-400">
+          Meskipun keduanya luar biasa, <strong>{winner.name}</strong> memberikan kompleksitas rasa yang lebih tinggi dan pengalaman 'specialty' yang lebih otentik bagi pencinta kopi hitam.
+        </p>
+        <div class="mt-10">
+          <Button href={winner.href} label="Lihat Detail Pemenang" variant="primary" />
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="mt-24 space-y-12">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-stone-900">Perbandingan Teknis</h2>
+          <p class="mt-4 text-stone-500">Detail spesifikasi untuk membantu Anda memutuskan.</p>
+        </div>
+        <ComparisonTable 
+          productAName={productA.name} 
+          productBName={productB.name} 
+          rows={comparisonRows} 
+        />
+      </div>
+
+      <!-- Scenario-based Recommendations -->
+      <div class="mt-24 grid gap-8 md:grid-cols-2">
+        <div class="rounded-3xl border border-stone-200 p-8">
+          <h3 class="text-xl font-bold text-stone-900">Pilih {productA.name} jika...</h3>
+          <ul class="mt-6 space-y-4">
+            <li class="flex items-start gap-3 text-stone-600">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Anda menyukai kopi hitam dengan sensasi asam segar seperti jeruk.</span>
+            </li>
+            <li class="flex items-start gap-3 text-stone-600">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Metode seduh utama Anda adalah V60 atau Aeropress.</span>
+            </li>
+            <li class="flex items-start gap-3 text-stone-600">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Anda mencari pengalaman 'origin' yang spesifik dan unik.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-stone-200 p-8">
+          <h3 class="text-xl font-bold text-stone-900">Pilih {productB.name} jika...</h3>
+          <ul class="mt-6 space-y-4">
+            <li class="flex items-start gap-3 text-stone-600">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Anda mencari kopi harian yang 'aman' dan tidak terlalu asam.</span>
+            </li>
+            <li class="flex items-start gap-3 text-stone-600">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Anda sering menyeduh kopi dengan susu atau kental manis.</span>
+            </li>
+            <li class="flex items-start gap-3 text-stone-600">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Anda mengutamakan keseimbangan rasa cokelat dan body yang tebal.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </section>
+</MainLayout>

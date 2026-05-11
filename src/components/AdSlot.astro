@@ -1,0 +1,41 @@
+---
+interface Props {
+  id: string;
+  slot: string;
+  height?: string; // e.g. "250px", "90px"
+}
+
+const { id, slot, height = "250px" } = Astro.props;
+---
+
+<div 
+  class="my-8 flex w-full items-center justify-center overflow-hidden bg-stone-100 text-[10px] uppercase tracking-widest text-stone-400"
+  style={`height: ${height};`}
+>
+  <div id={id} class="ad-slot" data-slot={slot}>
+    Advertisement
+    <!-- Actual Ad Script would go here -->
+  </div>
+</div>
+
+<style>
+  /* Prevent layout shift by enforcing height */
+  .ad-slot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<script>
+  // Simple lazy load logic if needed
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // console.log('Ad slot is visible, load ad script if not already loaded');
+      }
+    });
+  });
+
+  document.querySelectorAll('.ad-slot').forEach((slot) => observer.observe(slot));
+</script>

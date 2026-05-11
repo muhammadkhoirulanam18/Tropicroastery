@@ -1,0 +1,45 @@
+---
+import Container from "../components/Container.astro";
+import Badge from "../components/ui/Badge.astro";
+import Button from "../components/ui/Button.astro";
+
+interface Props {
+  label?: string;
+  title?: string;
+  description?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  label = "Specialty Coffee · Single Origin",
+  title = "Kopi yang berbicara sendiri.",
+  description = "Kami memilih, menyangrai, dan mengirim biji kopi terbaik dari dataran tinggi Indonesia langsung ke tangan Anda.",
+  ctaLabel = "Lihat Pilihan Kopi",
+  ctaHref = "/best/kopi-arabika-terbaik",
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24">
+  <Container as="div" narrow>
+    <div class="flex flex-col items-start gap-8 md:gap-10">
+      <!-- Small Label -->
+      {label && <Badge label={label} tone="neutral" />}
+
+      <!-- Large SEO Heading -->
+      <h1 class="font-display text-5xl font-bold leading-[1.1] tracking-tight text-stone-900 md:text-6xl lg:text-7xl xl:text-8xl">
+        {title}
+      </h1>
+
+      <!-- Short Description -->
+      <p class="max-w-xl text-lg leading-relaxed text-stone-500 md:text-xl md:leading-relaxed">
+        {description}
+      </p>
+
+      <!-- CTA Button -->
+      <div class="pt-4">
+        <Button href={ctaHref} label={ctaLabel} variant="primary" />
+      </div>
+    </div>
+  </Container>
+</section>

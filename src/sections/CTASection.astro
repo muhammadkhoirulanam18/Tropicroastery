@@ -1,0 +1,34 @@
+---
+import Container from "../components/Container.astro";
+import Button from "../components/ui/Button.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  title = "Nikmati Kesegaran Kopi Nusantara.",
+  description = "Setiap biji kopi kami disangrai dengan presisi untuk memastikan Anda mendapatkan pengalaman rasa terbaik di setiap cangkir.",
+  ctaLabel = "Mulai Belanja",
+  ctaHref = "/best/kopi-arabika-terbaik",
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24 border-t border-stone-200 bg-stone-50/30">
+  <Container as="div" narrow>
+    <div class="flex flex-col items-center text-center gap-8">
+      <h2 class="font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
+        {title}
+      </h2>
+      <p class="max-w-xl text-lg text-stone-500 leading-relaxed md:text-xl">
+        {description}
+      </p>
+      <div class="pt-4">
+        <Button href={ctaHref} label={ctaLabel} variant="primary" />
+      </div>
+    </div>
+  </Container>
+</section>
