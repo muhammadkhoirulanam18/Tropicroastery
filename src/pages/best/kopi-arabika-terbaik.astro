@@ -1,0 +1,172 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import SectionHeader from "../../sections/SectionHeader.astro";
+import Container from "../../components/Container.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Button from "../../components/ui/Button.astro";
+
+const products = [
+  {
+    title: "Kintamani Arabica Premium",
+    price: "Rp 185.000",
+    description: "Kopi Arabika terbaik dengan profil rasa yang bersih, citrusy, dan body yang ringan. Diproses secara natural dari dataran tinggi Kintamani.",
+    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Best Overall",
+    roastLevel: "Light to Medium",
+    flavorNotes: "Orange, Honey, Floral",
+    rating: 4.9,
+    href: "/review/kintamani-premium"
+  },
+  {
+    title: "Gayo Mountain Special",
+    price: "Rp 165.000",
+    description: "Kopi dengan karakter bold dan aroma rempah yang khas. Cocok bagi pencinta kopi dengan body yang tebal dan aciditas rendah.",
+    image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Most Popular",
+    roastLevel: "Medium Roast",
+    flavorNotes: "Chocolate, Spicy, Earthy",
+    rating: 4.8,
+    href: "/review/gayo-mountain"
+  },
+  {
+    title: "Toraja Sapan S7",
+    price: "Rp 210.000",
+    description: "Pilihan premium untuk rasa yang kompleks. Memiliki notes buah-buahan tropis dengan aftertaste yang manis dan panjang.",
+    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Best Premium",
+    roastLevel: "Medium Roast",
+    flavorNotes: "Berry, Caramel, Nutty",
+    rating: 5.0,
+    href: "/review/toraja-sapan"
+  },
+  {
+    title: "Java Preanger Daily",
+    price: "Rp 120.000",
+    description: "Kopi harian berkualitas dengan harga terjangkau. Seimbang antara rasa cokelat dan kacang-kacangan.",
+    image: "https://images.unsplash.com/photo-1509785307050-d4066910ec1e?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Best Budget",
+    roastLevel: "Medium to Dark",
+    flavorNotes: "Dark Chocolate, Roasted Peanut",
+    rating: 4.6,
+    href: "/review/java-preanger"
+  },
+  {
+    title: "Ijen Blue Mountain",
+    price: "Rp 175.000",
+    description: "Unik dengan rasa yang cenderung manis dan keasaman yang menyegarkan seperti apel hijau.",
+    image: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1200&q=80&fm=webp",
+    badge: "Cocok untuk Pemula",
+    roastLevel: "Medium Roast",
+    flavorNotes: "Green Apple, Brown Sugar",
+    rating: 4.7,
+    href: "/review/ijen-blue-mountain"
+  }
+];
+
+const topProduct = products[0];
+const otherProducts = products.slice(1);
+---
+
+<MainLayout 
+  title="5 Rekomendasi Kopi Arabika Terbaik 2026 | Tropic Roastery"
+  description="Temukan pilihan kopi arabika terbaik di Indonesia. Kami mengkurasi biji kopi pilihan dengan rating tertinggi untuk pengalaman seduh premium Anda."
+>
+  <section class="ds-section">
+    <Container as="div">
+      <SectionHeader 
+        kicker="Rekomendasi Utama"
+        title="Biji Kopi Arabika Terbaik 2026"
+        description="Kami telah mencoba dan mengkurasi puluhan biji kopi dari berbagai origin di Indonesia untuk membantu Anda menemukan rasa yang paling pas."
+      />
+
+      <!-- Top 1 Highlight (Mandatory) -->
+      <div class="mt-12">
+        <article class="relative grid gap-8 overflow-hidden rounded-[2.5rem] border border-neutral-200 bg-white p-6 md:grid-cols-2 md:items-center lg:p-12 shadow-sm">
+          <div class="aspect-[4/3] overflow-hidden rounded-3xl">
+            <img 
+              src={topProduct.image} 
+              alt={topProduct.title} 
+              class="h-full w-full object-cover transition duration-500 hover:scale-105" 
+            />
+          </div>
+          <div class="space-y-6">
+            <div class="flex items-center gap-3">
+              <Badge label={topProduct.badge} />
+              <div class="flex items-center gap-1 text-sm font-bold text-orange-500">
+                <span>★</span>
+                <span>{topProduct.rating}</span>
+              </div>
+            </div>
+            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 md:text-4xl">{topProduct.title}</h2>
+            <p class="text-lg leading-relaxed text-neutral-600">{topProduct.description}</p>
+            <div class="flex flex-wrap gap-3">
+              <span class="ds-chip">{topProduct.roastLevel}</span>
+              <span class="ds-chip">{topProduct.flavorNotes}</span>
+            </div>
+            <div class="flex flex-col gap-3 pt-4 sm:flex-row">
+              <Button href={topProduct.href} label="Lihat Detail Review" variant="outline" class="flex-1" />
+              <Button href="#beli" label="Beli Sekarang" variant="primary" class="flex-1" />
+            </div>
+          </div>
+          <div class="absolute right-8 top-8 hidden md:block">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 font-display text-xl font-bold text-white shadow-xl shadow-orange-500/20">
+              #1
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Other Products (Rank 2-5) -->
+      <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+        {otherProducts.map((product, index) => (
+          <div class="relative">
+            <div class="absolute -top-4 -left-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900 font-display text-sm font-bold text-white shadow-lg">
+              #{index + 2}
+            </div>
+            <ProductCard {...product} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Quick Comparison Table (Optional but Recommended in Comparison Rules) -->
+      <div class="mt-24 space-y-8">
+        <SectionHeader 
+          kicker="Perbandingan Cepat"
+          title="Pilih Sesuai Kebutuhan Anda"
+          description="Gunakan tabel di bawah ini untuk membandingkan fitur utama dari setiap pilihan kopi arabika terbaik kami."
+        />
+        
+        <div class="overflow-x-auto rounded-[2rem] border border-neutral-200 bg-white">
+          <table class="w-full text-left">
+            <thead class="border-b border-neutral-100 bg-neutral-50/50">
+              <tr>
+                <th class="px-6 py-4 text-sm font-semibold text-neutral-900">Produk</th>
+                <th class="px-6 py-4 text-sm font-semibold text-neutral-900">Roast</th>
+                <th class="px-6 py-4 text-sm font-semibold text-neutral-900">Rasa</th>
+                <th class="px-6 py-4 text-sm font-semibold text-neutral-900">Harga</th>
+                <th class="px-6 py-4 text-sm font-semibold text-neutral-900">Aksi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-100">
+              {products.map((product) => (
+                <tr>
+                  <td class="px-6 py-4">
+                    <p class="font-medium text-neutral-900">{product.title}</p>
+                    <span class="text-xs text-neutral-500">{product.badge}</span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-neutral-600">{product.roastLevel}</td>
+                  <td class="px-6 py-4 text-sm text-neutral-600">{product.flavorNotes}</td>
+                  <td class="px-6 py-4 text-sm font-semibold text-orange-500">{product.price}</td>
+                  <td class="px-6 py-4">
+                    <a href={product.href} class="text-sm font-medium text-neutral-900 underline underline-offset-4 hover:text-orange-500">Detail</a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </Container>
+  </section>
+</MainLayout>

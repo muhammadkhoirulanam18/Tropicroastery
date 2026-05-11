@@ -1,0 +1,13 @@
+---
+const {
+  as: Tag = "div",
+  class: className = "",
+  narrow = false,
+} = Astro.props;
+
+const widthClass = narrow ? "max-w-4xl" : "max-w-7xl";
+---
+
+<Tag class={`mx-auto w-full ${widthClass} px-4 sm:px-6 lg:px-8 xl:px-10 ${className}`.trim()}>
+  <slot />
+</Tag>

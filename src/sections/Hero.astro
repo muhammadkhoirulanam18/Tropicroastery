@@ -1,4 +1,5 @@
 ---
+import Container from "../components/Container.astro";
 import Badge from "../components/ui/Badge.astro";
 import Button from "../components/ui/Button.astro";
 
@@ -6,8 +7,8 @@ const {
   eyebrow = "Specialty coffee",
   title = "Premium minimal coffee storefront for Tropic Roastery.",
   description = "Clean layout, premium whitespace, and reusable product cards built to showcase beans, brewing, and brand story without heavy JavaScript.",
-  primaryHref = "#beans",
-  primaryLabel = "Lihat Beans",
+  primaryHref = "/best/kopi-arabika-terbaik",
+  primaryLabel = "Cek Biji Kopi Terbaik",
   secondaryHref = "#story",
   secondaryLabel = "Brand Story",
 } = Astro.props;
@@ -20,7 +21,7 @@ const stats = [
 ---
 
 <section class="ds-section">
-  <div class="ds-container text-center">
+  <Container as="div" class="text-center">
     <Badge label={eyebrow} />
     <h1 class="ds-heading mx-auto mt-8 max-w-4xl md:leading-tight">
       {title}
@@ -41,5 +42,5 @@ const stats = [
         </div>
       ))}
     </div>
-  </div>
+  </Container>
 </section>

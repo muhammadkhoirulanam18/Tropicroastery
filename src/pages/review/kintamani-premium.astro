@@ -1,0 +1,136 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Container from "../../components/Container.astro";
+import SectionHeader from "../../sections/SectionHeader.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Button from "../../components/ui/Button.astro";
+
+const review = {
+  title: "Review Kintamani Arabica Premium: Kopi Paling Bersih & Citrusy",
+  productName: "Kintamani Arabica Premium",
+  rating: 4.9,
+  price: "Rp 185.000",
+  image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=1200&q=80&fm=webp",
+  summary: "Kopi Kintamani Premium ini adalah pilihan terbaik bagi Anda yang menyukai profil rasa yang cerah (bright) dengan sentuhan jeruk yang dominan. Sangat direkomendasikan untuk seduhan manual seperti V60.",
+  pros: ["Rasa sangat bersih (clean)", "Notes jeruk yang jelas", "Aftertaste manis madu", "Body ringan dan menyegarkan"],
+  cons: ["Kurang cocok untuk espresso susu", "Harga sedikit di atas rata-rata"],
+  details: [
+    {
+      title: "Profil Rasa",
+      content: "Saat pertama kali disesap, Anda akan langsung merasakan keasaman yang segar mirip kulit jeruk (orange peel). Seiring suhu kopi menurun, rasa manis madu mulai muncul dan menyeimbangkan keasamannya."
+    },
+    {
+      title: "Rekomendasi Seduh",
+      content: "Kami merekomendasikan metode V60 dengan rasio 1:15 untuk mengeluarkan karakteristik aromatiknya. Gunakan suhu air sekitar 90-92 derajat Celcius."
+    },
+    {
+      title: "Asal-Usul",
+      content: "Biji kopi ini ditanam di ketinggian 1200-1400 mdpl di dataran tinggi Kintamani, Bali. Diproses dengan metode Full Washed untuk memastikan kejernihan rasa."
+    }
+  ],
+  useCase: "Terbaik untuk pencinta kopi hitam yang mencari kesegaran di pagi hari."
+};
+---
+
+<MainLayout 
+  title={review.title}
+  description={review.summary}
+>
+  <article class="ds-section">
+    <Container as="div">
+      <!-- 1. Title (keyword) & 3. CTA (above fold) -->
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div class="space-y-6">
+          <Badge label="Best Overall" />
+          <h1 class="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">{review.title}</h1>
+          <div class="flex items-center gap-2 text-lg font-bold text-orange-500">
+            <span>★</span>
+            <span>{review.rating} / 5.0</span>
+          </div>
+          <p class="text-lg leading-relaxed text-neutral-600">{review.summary}</p>
+          <div class="flex flex-col gap-4 pt-4 sm:flex-row">
+            <Button href="#beli" label="Cek Harga" variant="primary" class="flex-1" />
+            <Button href="/best/kopi-arabika-terbaik" label="Lihat Pilihan Lain" variant="outline" class="flex-1" />
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2.5rem] border border-neutral-200">
+          <img src={review.image} alt={review.productName} class="aspect-[4/3] w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- 2. TL;DR Box -->
+      <div class="mt-16 rounded-3xl bg-neutral-900 p-8 text-white md:p-12">
+        <h2 class="text-2xl font-bold">TL;DR: Mengapa Kami Menyukainya</h2>
+        <p class="mt-4 text-neutral-400 leading-relaxed">
+          Jika Anda mencari kopi dengan karakter 'fruity' yang kuat namun tetap seimbang, Kintamani Premium adalah jawabannya. Tidak ada rasa pahit yang mengganggu, hanya kesegaran jeruk dan kemanisan yang bertahan lama.
+        </p>
+      </div>
+
+      <!-- 4. Pros & Cons -->
+      <div class="mt-16 grid gap-8 md:grid-cols-2">
+        <div class="rounded-3xl border border-neutral-200 bg-white p-8">
+          <h3 class="text-xl font-bold text-neutral-900">Kelebihan</h3>
+          <ul class="mt-4 space-y-3">
+            {review.pros.map(pro => (
+              <li class="flex items-center gap-3 text-sm text-neutral-600">
+                <span class="text-green-500">✓</span> {pro}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-3xl border border-neutral-200 bg-white p-8">
+          <h3 class="text-xl font-bold text-neutral-900">Kekurangan</h3>
+          <ul class="mt-4 space-y-3">
+            {review.cons.map(con => (
+              <li class="flex items-center gap-3 text-sm text-neutral-600">
+                <span class="text-red-400">✕</span> {con}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5. Detailed Breakdown -->
+      <div class="mt-24 max-w-3xl mx-auto space-y-16">
+        {review.details.map(section => (
+          <section class="space-y-4">
+            <h2 class="text-2xl font-bold text-neutral-900">{section.title}</h2>
+            <p class="text-lg leading-relaxed text-neutral-600">{section.content}</p>
+          </section>
+        ))}
+
+        <!-- 7. CTA (mid) -->
+        <div class="rounded-3xl bg-orange-50 p-8 text-center sm:p-12">
+          <h3 class="text-xl font-bold text-neutral-900">Siap mencoba Kintamani Premium?</h3>
+          <p class="mt-2 text-neutral-600">Beli sekarang dan rasakan kesegarannya di rumah.</p>
+          <div class="mt-6">
+            <Button href="#beli" label="Beli Sekarang" variant="primary" />
+          </div>
+        </div>
+
+        <!-- 6. Use-case clarity -->
+        <section class="space-y-4">
+          <h2 class="text-2xl font-bold text-neutral-900">Cocok Untuk Siapa?</h2>
+          <div class="rounded-3xl border border-neutral-200 p-8">
+            <p class="text-lg leading-relaxed text-neutral-600">{review.useCase}</p>
+            <div class="mt-4 flex gap-2">
+              <Badge label="Pencinta Kopi Hitam" tone="neutral" />
+              <Badge label="V60 Enthusiast" tone="neutral" />
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 8. CTA (bottom) -->
+      <div class="mt-24 border-t border-neutral-200 pt-16">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-neutral-900">Kesimpulan Akhir</h2>
+            <p class="mt-4 text-lg text-neutral-600">Investasi kecil untuk ritual pagi yang jauh lebih berkualitas.</p>
+          </div>
+          <Button href="#beli" label="Lihat Detail Produk" variant="primary" size="lg" />
+        </div>
+      </div>
+    </Container>
+  </article>
+</MainLayout>

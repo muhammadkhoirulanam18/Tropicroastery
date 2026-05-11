@@ -1,5 +1,7 @@
 
 ---
+import Container from "./Container.astro";
+
 const links = [
   { href: "#story", label: "Story" },
   { href: "#beans", label: "Beans" },
@@ -10,7 +12,7 @@ const links = [
 ---
 
 <nav class="fixed inset-x-0 top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur-md">
-  <div class="ds-container">
+  <Container as="div">
     <div class="flex h-20 items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-500 text-sm font-bold text-white">
@@ -58,5 +60,5 @@ const links = [
         </div>
       </details>
     </div>
-  </div>
+  </Container>
 </nav>
