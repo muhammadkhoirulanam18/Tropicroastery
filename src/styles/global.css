@@ -1,17 +1,57 @@
 @import "tailwindcss";
 
+/* ===========================
+   TROPIC ROASTERY DESIGN SYSTEM
+   Inspired by Blue Bottle / Kinfolk
+   Calm, spacious, typography-first
+   =========================== */
+
+/* --- Base --- */
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-stone-50 text-stone-900 antialiased;
+  @apply bg-white text-stone-800 antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img {
   @apply max-w-full h-auto;
 }
 
-a {
-  @apply transition-all duration-200;
+/* --- Typography --- */
+
+.font-display {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+/* --- Components --- */
+
+.ds-button-primary {
+  @apply inline-flex items-center gap-2 rounded-full bg-stone-900 px-7 py-3 text-sm font-medium text-white;
+}
+
+.ds-button-primary:hover {
+  @apply bg-stone-800;
+}
+
+.ds-button-secondary {
+  @apply inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-7 py-3 text-sm font-medium text-stone-800;
+}
+
+.ds-button-secondary:hover {
+  @apply border-stone-300 bg-stone-50;
+}
+
+.ds-kicker {
+  @apply text-xs font-medium uppercase tracking-[0.15em] text-stone-400;
+}
+
+/* --- Section spacing token --- */
+.ds-section {
+  @apply py-16 md:py-24;
 }

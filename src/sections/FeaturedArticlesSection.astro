@@ -27,16 +27,16 @@ const defaultArticles: Article[] = [
     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=75&fm=webp"
   },
   {
-    title: "Perbedaan Kopi Arabika dan Robusta: Mana yang Lebih Cocok untuk Anda?",
-    excerpt: "Pahami perbedaan mendasar antara kopi Arabika dan Robusta mulai dari rasa, kadar kafein, hingga harga agar tidak salah pilih.",
+    title: "Perbedaan Kopi Arabika dan Robusta: Mana yang Lebih Cocok?",
+    excerpt: "Pahami perbedaan mendasar antara kopi Arabika dan Robusta mulai dari rasa, kadar kafein, hingga harga.",
     href: "/blog/perbedaan-kopi-arabika-dan-robusta",
     category: "Pengetahuan Kopi",
     date: "11 Mei 2026",
     image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=800&q=75&fm=webp"
   },
   {
-    title: "Cara Menyimpan Biji Kopi agar Tetap Segar Selama Berbulan-bulan",
-    excerpt: "Jangan biarkan kopi mahal Anda menjadi apek. Ikuti panduan cara menyimpan biji kopi yang benar untuk menjaga aroma dan rasa.",
+    title: "Cara Menyimpan Biji Kopi agar Tetap Segar",
+    excerpt: "Jangan biarkan kopi mahal Anda menjadi apek. Ikuti panduan menyimpan biji kopi yang benar.",
     href: "/blog/cara-menyimpan-biji-kopi",
     category: "Tips & Trik",
     date: "11 Mei 2026",
@@ -45,39 +45,35 @@ const defaultArticles: Article[] = [
 ];
 
 const {
-  title = "Brewing Notes & Stories",
-  description = "Eksplorasi dunia kopi melalui panduan seduh, ulasan produk, dan cerita dari balik meja sangrai kami.",
+  title = "Journal",
+  description = "Panduan seduh, ulasan produk, dan cerita dari balik meja sangrai.",
   articles = defaultArticles
 } = Astro.props;
 ---
 
-<section class="border-t border-stone-200 py-16 md:py-24">
+<section class="border-t border-stone-100 py-16 md:py-24">
   <Container as="div">
-    <div class="flex flex-col gap-16">
+    <div class="flex flex-col gap-12 md:gap-16">
       <!-- Section Header -->
-      <div class="max-w-2xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-stone-400">Journal</p>
-        <h2 class="mt-4 font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl">
-          {title}
-        </h2>
-        <p class="mt-6 text-lg text-stone-500 leading-relaxed">
-          {description}
-        </p>
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 class="font-display text-2xl font-semibold tracking-tight text-stone-900 md:text-3xl">
+            {title}
+          </h2>
+          <p class="mt-3 text-base text-stone-500">
+            {description}
+          </p>
+        </div>
+        <a href="/blog" class="shrink-0 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
+          Semua Artikel
+        </a>
       </div>
 
       <!-- Articles Grid -->
-      <div class="grid gap-x-10 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
           <ArticleCard {...article} />
         ))}
-      </div>
-
-      <!-- Section Footer -->
-      <div class="flex justify-start">
-        <a href="/blog" class="group inline-flex items-center gap-2 text-sm font-bold text-stone-900 underline underline-offset-8 hover:text-orange-600 transition-colors">
-          Lihat Semua Artikel
-          <span class="transition-transform group-hover:translate-x-1">→</span>
-        </a>
       </div>
     </div>
   </Container>

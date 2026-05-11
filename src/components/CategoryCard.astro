@@ -9,27 +9,21 @@ interface Props {
 const { name, description, href, count } = Astro.props;
 ---
 
-<article class="group relative flex flex-col justify-end overflow-hidden rounded-[2rem] border border-stone-200 bg-white p-8 transition-all duration-300 hover:border-orange-200 hover:shadow-xl hover:shadow-orange-500/5">
-  <div class="flex flex-col gap-4">
-    {count && (
-      <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">
-        {count}
-      </span>
-    )}
-    
-    <h3 class="font-display text-2xl font-bold tracking-tight text-stone-900 group-hover:text-orange-600 transition-colors">
-      <a href={href} class="after:absolute after:inset-0">
+<article class="group relative border-t border-stone-100 py-8">
+  <a href={href} class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between after:absolute after:inset-0">
+    <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:gap-6">
+      <h3 class="font-display text-lg font-semibold text-stone-900 group-hover:text-stone-600 md:text-xl">
         {name}
-      </a>
-    </h3>
-    
-    <p class="text-sm leading-relaxed text-stone-500 line-clamp-2">
+      </h3>
+      {count && (
+        <span class="text-xs font-medium uppercase tracking-[0.12em] text-stone-400">
+          {count}
+        </span>
+      )}
+    </div>
+
+    <p class="text-sm text-stone-500 md:max-w-xs md:text-right">
       {description}
     </p>
-
-    <div class="mt-2 flex items-center gap-2 text-xs font-bold text-stone-900 group-hover:text-orange-600">
-      <span>Lihat Koleksi</span>
-      <span class="transition-transform group-hover:translate-x-1">→</span>
-    </div>
-  </div>
+  </a>
 </article>

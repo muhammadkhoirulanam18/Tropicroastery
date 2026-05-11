@@ -1,53 +1,52 @@
 ---
 import Container from "../components/Container.astro";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/best/kopi-arabika-terbaik", label: "Beans" },
+  { href: "/blog", label: "Journal" },
+  { href: "/about", label: "Story" },
+  { href: "/contact", label: "Contact" },
+];
 ---
 
-<footer class="border-t border-stone-200 bg-stone-50/50 py-24" id="footer">
+<footer class="border-t border-stone-100 py-16 md:py-24" id="footer">
   <Container as="div">
-    <div class="grid gap-16 lg:grid-cols-[1fr_0.4fr]">
-      <div class="max-w-xl">
-        <div class="flex items-center gap-3">
-          <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-500 text-sm font-bold text-white">
-            TR
-          </div>
-          <p class="font-display text-xl font-bold text-stone-900">Tropic Roastery</p>
-        </div>
-        <h2 class="mt-8 text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
-          Premium minimal coffee storefront, built for speed and conversion.
-        </h2>
-        <p class="mt-6 text-lg text-stone-500 leading-relaxed">
-          Dedikasi kami untuk kopi nusantara tercermin dalam setiap biji yang kami pilih dan setiap artikel yang kami tulis.
+    <div class="flex flex-col gap-12 md:flex-row md:justify-between">
+      <!-- Wordmark & tagline -->
+      <div class="max-w-sm">
+        <p class="font-display text-lg font-semibold text-stone-900">Tropic Roastery</p>
+        <p class="mt-3 text-sm text-stone-500 leading-relaxed">
+          Kopi single origin pilihan dari dataran tinggi Indonesia. Disangrai kecil, dikirim segar.
         </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-8 lg:grid-cols-1">
+      <!-- Links -->
+      <div class="flex gap-16">
         <div class="space-y-4">
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-stone-400">Navigation</h3>
-          <ul class="space-y-2 text-sm font-medium text-stone-600">
-            <li><a href="/" class="hover:text-orange-600 transition">Home</a></li>
-            <li><a href="/best/kopi-arabika-terbaik" class="hover:text-orange-600 transition">Best Beans</a></li>
-            <li><a href="/blog" class="hover:text-orange-600 transition">Journal</a></li>
-            <li><a href="/about" class="hover:text-orange-600 transition">Our Story</a></li>
+          <p class="ds-kicker">Navigation</p>
+          <ul class="space-y-2.5">
+            {links.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-stone-500 hover:text-stone-900">
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         <div class="space-y-4">
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-stone-400">Contact</h3>
-          <ul class="space-y-2 text-sm font-medium text-stone-600">
+          <p class="ds-kicker">Contact</p>
+          <ul class="space-y-2.5 text-sm text-stone-500">
             <li>mkhoirulanam920@gmail.com</li>
             <li>Yogyakarta, Indonesia</li>
-            <li><a href="/contact" class="hover:text-orange-600 transition">Get in Touch</a></li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="mt-20 flex flex-col gap-6 border-t border-stone-200 pt-8 text-xs font-medium text-stone-400 md:flex-row md:items-center md:justify-between">
+    <div class="mt-16 border-t border-stone-100 pt-6 text-xs text-stone-400">
       <p>© 2026 Tropic Roastery. All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-stone-900">Privacy Policy</a>
-        <a href="#" class="hover:text-stone-900">Terms of Service</a>
-        <a href="#" class="hover:text-stone-900">Shipping Info</a>
-      </div>
     </div>
   </Container>
 </footer>

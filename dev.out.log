@@ -97,3 +97,49 @@
 [2m23:57:47[22m [34m[200][39m / [2m6ms[22m
 [2m23:57:55[22m [34m[200][39m / [2m4ms[22m
 [2m23:57:57[22m [34m[200][39m /best/kopi-arabika-terbaik [2m6ms[22m
+[2m23:59:24[22m [34m[200][39m /best/kopi-arabika-terbaik [2m3ms[22m
+[2m00:09:11[22m [34m[200][39m / [2m4ms[22m
+[2m00:09:43[22m [34m[200][39m / [2m6ms[22m
+[2m00:09:44[22m [34m[200][39m /best/kopi-arabika-terbaik [2m7ms[22m
+[2m00:09:56[22m [34m[200][39m /best/kopi-arabika-terbaik [2m3ms[22m
+[2m00:09:57[22m [34m[200][39m / [2m8ms[22m
+[2m00:09:59[22m [34m[200][39m /best/kopi-arabika-terbaik [2m4ms[22m
+[2m00:10:28[22m [34m[watch][39m src/pages/best/kopi-arabika-terbaik.astro
+[2m00:10:28[22m [34m[watch][39m src/pages/best/kopi-arabika-terbaik.astro
+[2m00:10:28[22m [34m[200][39m /best/kopi-arabika-terbaik [2m103ms[22m
+[2m00:10:42[22m [34m[200][39m /review/kintamani-premium [2m6ms[22m
+[2m00:11:13[22m [33m[404][39m /review/ijen-blue-mountain [2m2ms[22m
+[2m00:11:16[22m [33m[404][39m /review/java-preanger [2m0ms[22m
+[2m00:11:19[22m [33m[404][39m /review/toraja-sapan [2m1ms[22m
+[2m00:11:22[22m [33m[404][39m /review/gayo-mountain [2m0ms[22m
+[2m00:11:27[22m [34m[200][39m /contact [2m3ms[22m
+[2m00:11:29[22m [34m[200][39m /about [2m3ms[22m
+[2m00:11:46[22m [34m[200][39m /blog [2m3ms[22m
+[2m00:15:05[22m [34m[watch][39m /src/styles/global.css
+[2m00:15:06[22m [34m[200][39m /blog [2m66ms[22m
+[2m00:15:20[22m [34m[watch][39m src/layouts/MainLayout.astro
+[2m00:15:21[22m [34m[200][39m /blog [2m63ms[22m
+[2m00:15:34[22m [34m[watch][39m src/components/Navbar.astro
+[2m00:15:34[22m [34m[watch][39m src/components/Navbar.astro
+[2m00:15:35[22m [34m[200][39m /blog [2m72ms[22m
+[2m00:18:15[22m [34m[watch][39m src/sections/HeroSection.astro
+[2m00:18:15[22m [34m[watch][39m src/sections/HeroSection.astro
+[2m00:18:15[22m [34m[200][39m /blog [2m76ms[22m
+[2m00:18:28[22m [34m[watch][39m src/components/ArticleCard.astro
+[2m00:18:29[22m [34m[watch][39m src/components/ArticleCard.astro
+[2m00:18:29[22m [34m[200][39m /blog [2m68ms[22m
+[2m00:18:50[22m [34m[watch][39m src/sections/FeaturedArticlesSection.astro
+[2m00:18:50[22m [34m[watch][39m src/sections/FeaturedArticlesSection.astro
+[2m00:18:50[22m [34m[200][39m /blog [2m81ms[22m
+[2m00:19:01[22m [34m[watch][39m src/components/CategoryCard.astro
+[2m00:19:01[22m [34m[watch][39m src/components/CategoryCard.astro
+[2m00:19:01[22m [34m[200][39m /blog [2m75ms[22m
+[2m00:19:16[22m [34m[watch][39m src/sections/CategoriesSection.astro
+[2m00:19:16[22m [34m[watch][39m src/sections/CategoriesSection.astro
+[2m00:19:16[22m [34m[200][39m /blog [2m69ms[22m
+[2m00:19:27[22m [34m[watch][39m src/sections/CTASection.astro
+[2m00:19:27[22m [34m[watch][39m src/sections/CTASection.astro
+[2m00:19:28[22m [34m[200][39m /blog [2m68ms[22m
+[2m00:19:43[22m [34m[watch][39m src/sections/SiteFooter.astro
+[2m00:19:43[22m [34m[watch][39m src/sections/SiteFooter.astro
+[2m00:19:44[22m [34m[200][39m /blog [2m91ms[22m

@@ -20,28 +20,23 @@ const {
 } = Astro.props;
 ---
 
-<article class="group flex flex-col gap-5">
+<article class="group flex flex-col gap-4">
   <!-- Image -->
-  <a href={href} class="block overflow-hidden rounded-2xl bg-stone-100" tabindex="-1" aria-hidden="true">
-    {image ? (
+  {image && (
+    <a href={href} class="block overflow-hidden rounded-sm bg-stone-100 mb-2" tabindex="-1" aria-hidden="true">
       <img
         src={image}
         alt={imageAlt}
-        class="aspect-[16/9] w-full object-cover"
+        class="aspect-[3/2] w-full object-cover"
         loading="lazy"
         decoding="async"
       />
-    ) : (
-      <!-- Placeholder -->
-      <div class="aspect-[16/9] w-full bg-gradient-to-br from-stone-200 to-stone-300 flex items-end p-5">
-        <span class="text-xs font-semibold uppercase tracking-widest text-stone-500">Tropic Roastery</span>
-      </div>
-    )}
-  </a>
+    </a>
+  )}
 
   <!-- Meta -->
-  <div class="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-stone-400">
-    <span class="text-orange-600">{category}</span>
+  <div class="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-stone-400">
+    <span>{category}</span>
     {date && (
       <>
         <span>·</span>
@@ -51,24 +46,23 @@ const {
   </div>
 
   <!-- Title -->
-  <h3 class="text-xl font-bold leading-snug tracking-tight text-stone-900 md:text-2xl">
-    <a href={href} class="hover:text-orange-600 transition-colors duration-150">
+  <h3 class="font-display text-lg font-semibold leading-snug text-stone-900 md:text-xl">
+    <a href={href} class="hover:text-stone-600">
       {title}
     </a>
   </h3>
 
   <!-- Excerpt -->
-  <p class="text-stone-500 leading-relaxed line-clamp-3">
+  <p class="text-sm leading-relaxed text-stone-500 line-clamp-2">
     {excerpt}
   </p>
 
   <!-- Read link -->
   <a
     href={href}
-    class="inline-flex items-center gap-2 text-sm font-bold text-stone-900 underline underline-offset-4 hover:text-orange-600 transition-colors duration-150"
+    class="mt-1 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900"
     aria-label={`Baca artikel: ${title}`}
   >
     Baca Artikel
-    <span aria-hidden="true">→</span>
   </a>
 </article>
