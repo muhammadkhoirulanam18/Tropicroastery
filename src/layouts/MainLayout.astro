@@ -36,7 +36,7 @@ const siteName = "Tropic Roastery";
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site || 'https://tropicroastery.com')} />
     <meta property="og:site_name" content={siteName} />
 
     <!-- Twitter -->
@@ -44,7 +44,7 @@ const siteName = "Tropic Roastery";
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.site || 'https://tropicroastery.com')} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

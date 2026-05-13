@@ -5,51 +5,56 @@ import CategoryCard from "../components/CategoryCard.astro";
 const categories = [
   {
     name: "Single Origin",
-    description: "Kopi murni dari satu wilayah untuk karakter rasa yang spesifik.",
+    description: "Kopi murni dari satu wilayah untuk karakter rasa yang spesifik dan dapat ditelusuri.",
     href: "/best/kopi-arabika-terbaik",
     count: "08 Beans"
   },
   {
     name: "Espresso Roast",
-    description: "Sangrai gelap dengan body tebal, ideal untuk espresso dan susu.",
+    description: "Sangrai gelap dengan body tebal, ideal untuk espresso dan minuman berbasis susu.",
     href: "/best/kopi-arabika-terbaik",
     count: "06 Beans"
   },
   {
     name: "Manual Brew",
-    description: "Profil rasa cerah dan kompleks, dikurasi untuk V60 dan filter.",
+    description: "Profil rasa cerah dan kompleks, dikurasi untuk V60, Chemex, dan metode filter.",
     href: "/best/kopi-arabika-terbaik",
     count: "10 Beans"
   },
   {
     name: "Gifts & Sets",
-    description: "Paket kurasi untuk kado spesial atau mencoba berbagai varian.",
+    description: "Paket kurasi untuk kado spesial atau menjelajahi berbagai varian dalam satu kotak.",
     href: "/best/kopi-arabika-terbaik",
     count: "04 Sets"
   }
 ];
 ---
 
-<section class="border-t border-stone-100 py-16 md:py-24">
-  <Container as="div">
-    <div class="flex flex-col gap-4">
-      <!-- Section Header -->
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between pb-4">
-        <h2 class="font-display text-2xl font-semibold tracking-tight text-stone-900 md:text-3xl">
-          Browse by Category
-        </h2>
-        <a href="/best/kopi-arabika-terbaik" class="shrink-0 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
-          Lihat Semua
+<section class="ds-section ds-divider">
+  <Container>
+    <div class="flex flex-col gap-10">
+
+      {/* Section header */}
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="ds-kicker mb-3">Shop by Category</p>
+          <h2 class="font-display text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
+            Browse by Category
+          </h2>
+        </div>
+        <a href="/best/kopi-arabika-terbaik" class="ds-link shrink-0">
+          Lihat Semua →
         </a>
       </div>
 
-      <!-- Category List -->
+      {/* Category list */}
       <div>
         {categories.map((category) => (
           <CategoryCard {...category} />
         ))}
-        <div class="border-t border-stone-100"></div>
+        <div class="border-t border-stone-100" />
       </div>
+
     </div>
   </Container>
 </section>

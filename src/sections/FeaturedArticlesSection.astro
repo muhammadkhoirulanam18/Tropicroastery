@@ -1,80 +1,82 @@
 ---
 import Container from "../components/Container.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import Badge from "@/components/ui/Badge.astro";
 
 interface Article {
   title: string;
-  excerpt: string;
+  description: string;
   href: string;
+  badge?: string;
   category: string;
   date: string;
   image?: string;
 }
 
-interface Props {
-  title?: string;
-  description?: string;
-  articles?: Article[];
-}
-
 const defaultArticles: Article[] = [
   {
     title: "Cara Menyeduh Kopi V60: Panduan Lengkap untuk Hasil Maksimal",
-    excerpt: "Pelajari teknik menyeduh kopi V60 yang benar untuk mengeluarkan profil rasa yang bersih, cerah, dan aromatik dari biji kopi pilihan Anda.",
+    description: "Pelajari teknik menyeduh kopi V60 yang benar untuk mengeluarkan profil rasa yang bersih, cerah, dan aromatik dari biji kopi pilihan Anda.",
     href: "/blog/cara-menyeduh-kopi-v60",
     category: "Tutorial Seduh",
+    description: "",
     date: "11 Mei 2026",
-    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=75&fm=webp"
+    image: "/images/v60-brewing.png"
   },
   {
     title: "Perbedaan Kopi Arabika dan Robusta: Mana yang Lebih Cocok?",
-    excerpt: "Pahami perbedaan mendasar antara kopi Arabika dan Robusta mulai dari rasa, kadar kafein, hingga harga.",
+    description: "Pahami perbedaan mendasar antara kopi Arabika dan Robusta mulai dari rasa, kadar kafein, hingga harga — agar pilihan Anda lebih tepat.",
     href: "/blog/perbedaan-kopi-arabika-dan-robusta",
     category: "Pengetahuan Kopi",
-    date: "11 Mei 2026",
-    image: "https://images.unsplash.com/photo-1495474472201-497192cf91a3?auto=format&fit=crop&w=800&q=75&fm=webp"
+    date: "10 Mei 2026",
+    image: "/images/arabica-vs-robusta.png"
   },
   {
     title: "Cara Menyimpan Biji Kopi agar Tetap Segar",
-    excerpt: "Jangan biarkan kopi mahal Anda menjadi apek. Ikuti panduan menyimpan biji kopi yang benar.",
+    description: "Jangan biarkan kopi mahal Anda menjadi apek. Ikuti panduan menyimpan biji kopi yang benar agar setiap seduhan tetap optimal.",
     href: "/blog/cara-menyimpan-biji-kopi",
     category: "Tips & Trik",
-    date: "11 Mei 2026",
-    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=75&fm=webp"
+    date: "9 Mei 2026",
+    image: "/images/coffee-storage.png"
   }
 ];
 
 const {
-  title = "Journal",
-  description = "Panduan seduh, ulasan produk, dan cerita dari balik meja sangrai.",
+  heading = "Journal",
+  subheading = "Panduan seduh, ulasan produk, dan cerita dari balik meja sangrai.",
   articles = defaultArticles
 } = Astro.props;
 ---
 
-<section class="border-t border-stone-100 py-16 md:py-24">
-  <Container as="div">
-    <div class="flex flex-col gap-12 md:gap-16">
-      <!-- Section Header -->
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+<section class="ds-section ds-divider">
+  <Container>
+    <div class="flex flex-col gap-14">
+
+      {/* Section header */}
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
         <div>
-          <h2 class="font-display text-2xl font-semibold tracking-tight text-stone-900 md:text-3xl">
-            {title}
+          <div class="mb-5">
+            <Badge label ="Latest Posts" tone="accent" />
+          </div>
+          <h2 class="font-display text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
+            {heading}
           </h2>
-          <p class="mt-3 text-base text-stone-500">
-            {description}
+          <p class="mt-3 max-w-md text-base leading-relaxed text-stone-500">
+            {subheading}
           </p>
         </div>
-        <a href="/blog" class="shrink-0 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
-          Semua Artikel
+        <a href="/blog" class="ds-link shrink-0">
+          Semua Artikel →
         </a>
       </div>
 
-      <!-- Articles Grid -->
-      <div class="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+      {/* Articles grid */}
+      <div class="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
           <ArticleCard {...article} />
         ))}
       </div>
+
     </div>
   </Container>
 </section>

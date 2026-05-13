@@ -1,17 +1,36 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import HeroSection from "../sections/HeroSection.astro";
+import Hero from "../sections/Hero.astro";
 import FeaturedArticlesSection from "../sections/FeaturedArticlesSection.astro";
 import CategoriesSection from "../sections/CategoriesSection.astro";
-import CTASection from "../sections/CTASection.astro";
+import BrewingGuideHighlight from "../sections/BrewingGuideHighlight.astro";
+import AffiliatePicks from "../sections/AffiliatePicks.astro";
+import RoasteryStory from "../sections/RoasteryStory.astro";
+import NewsletterCTA from "../sections/NewsletterCTA.astro";
 ---
 
 <MainLayout
   title="Tropic Roastery — Specialty Coffee dari Nusantara"
   description="Kopi single origin pilihan dari dataran tinggi Indonesia. Disangrai kecil, dikirim segar, dinikmati sepenuhnya."
 >
-  <HeroSection />
+  {/* 1. Hero — establish brand + primary CTA */}
+  <Hero />
+
+  {/* 2. Featured Journal — attract SEO traffic, link to /best & /review */}
   <FeaturedArticlesSection />
+
+  {/* 3. Categories — navigation into product funnel */}
   <CategoriesSection />
-  <CTASection />
+
+  {/* 4. Brewing Guide Highlight — editorial value content */}
+  <BrewingGuideHighlight />
+
+  {/* 5. Affiliate Picks — primary revenue section */}
+  <AffiliatePicks />
+
+  {/* 6. Roastery Story — brand trust, links to /about */}
+  <RoasteryStory />
+
+  {/* 7. Newsletter CTA — engagement + retention */}
+  <NewsletterCTA />
 </MainLayout>

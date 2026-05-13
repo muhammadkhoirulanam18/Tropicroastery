@@ -2,7 +2,10 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/Container.astro";
 import Badge from "../components/ui/Badge.astro";
+import Icon from "../components/ui/Icon.astro";  
+
 ---
+
 
 <MainLayout 
   title="Contact Us | Tropic Roastery" 
@@ -12,7 +15,8 @@ import Badge from "../components/ui/Badge.astro";
     <Container as="div">
       <div class="grid gap-16 lg:grid-cols-2 lg:items-start">
         <header class="space-y-6">
-          <Badge label="Contact Us" tone="neutral" />
+          <!-- <Badge label="Contact Us" tone="neutral" /> -->
+          <Badge label="Contact Us" />
           <h1 class="font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
             Mari Bicara Kopi.
           </h1>
@@ -23,7 +27,7 @@ import Badge from "../components/ui/Badge.astro";
           <div class="mt-12 space-y-8">
             <div>
               <h3 class="text-xs font-semibold uppercase tracking-widest text-stone-400">Email</h3>
-              <p class="mt-2 text-xl font-medium text-stone-900">mkhoirulanam920@gmail.com</p>
+              <p class="mt-2 text-xl font-medium text-stone-900">TropicRoastery@gmail.com</p>
             </div>
             <div>
               <h3 class="text-xs font-semibold uppercase tracking-widest text-stone-400">Alamat Sangrai</h3>
@@ -33,9 +37,9 @@ import Badge from "../components/ui/Badge.astro";
             <div>
               <h3 class="text-xs font-semibold uppercase tracking-widest text-stone-400">Socials</h3>
               <div class="mt-4 flex gap-6">
-                <a href="#" class="text-stone-600 hover:text-orange-600 transition">Instagram</a>
-                <a href="#" class="text-stone-600 hover:text-orange-600 transition">WhatsApp</a>
-                <a href="#" class="text-stone-600 hover:text-orange-600 transition">TikTok</a>
+                <a href="https://instagram.com/tropicroastery.id" class="text-stone-600 hover:text-orange-600 transition"><Icon name="lucide:instagram" class="w-6 h-6"/></a>
+                <a href="https://wa.me/6281379144823" class="text-stone-600 hover:text-orange-600 transition"><Icon name="simple-icons:whatsapp" class="w-6 h-6"/></a>
+                <a href="https://tiktok.com/@tropicroastery.id" class="text-stone-600 hover:text-orange-600 transition"><Icon name="simple-icons:tiktok" class="w-6 h-6"/></a>
               </div>
             </div>
           </div>
