@@ -1,0 +1,69 @@
+---
+/**
+ * RoasteryStory.astro
+ * Brand narrative section — typography-forward, minimal image, calm editorial tone.
+ * Inspired by Blue Bottle's "About" strip on homepage.
+ */
+import Container from "../components/Container.astro";
+import Badge from "../components/ui/Badge.astro";
+
+interface Props {
+  badge?: string;
+  title?: string;
+  body?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+const {
+  badge = "Our Story",
+  title = "Disangrai Kecil. Dikirim Segar. Dinikmati Sepenuhnya.",
+  body = "Tropic Roastery lahir dari rasa penasaran — seberapa jauh perbedaan kopi yang disangrai dengan penuh perhatian dibanding yang diproduksi massal? Kami menemukannya sendiri, dan tidak bisa berhenti. Setiap batch kami kecil. Setiap origin kami pilih langsung. Setiap cangkir menceritakan tempat asalnya.",
+  ctaLabel = "Tentang Kami",
+  ctaHref = "/about",
+  imageSrc = "https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1200&auto=format&fit=crop",
+  imageAlt = "Proses sangrai kopi dalam batch kecil di Tropic Roastery",
+} = Astro.props;
+---
+
+<section class="ds-section ds-divider bg-stone-50">
+  <Container>
+    <div class="grid items-center gap-12 md:grid-cols-2 lg:gap-24">
+
+      {/* Content — left on desktop */}
+      <div class="flex flex-col items-start">
+        <div class="mb-5">
+          <Badge label={badge} />
+        </div>
+
+        <h2 class="font-display text-3xl font-bold leading-[1.2] tracking-tight text-stone-900 md:text-4xl">
+          {title}
+        </h2>
+
+        <p class="mt-7 text-base leading-[1.9] text-stone-500">
+          {body}
+        </p>
+
+        <a href={ctaHref} class="ds-link mt-10">
+          {ctaLabel} →
+        </a>
+      </div>
+
+      {/* Image — right on desktop */}
+      <div class="overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="600"
+        />
+      </div>
+
+    </div>
+  </Container>
+</section>

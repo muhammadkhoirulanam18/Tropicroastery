@@ -1,0 +1,63 @@
+---
+/**
+ * CoffeeGearSection.astro
+ * Premium editorial section for coffee brewing equipment.
+ * Feel: Clean, modern, technical minimal.
+ */
+import Container from "../components/Container.astro";
+import EditorialCard from "../components/EditorialCard.astro";
+
+const gears = [
+  {
+    title: "V60 Ceramic Dropper",
+    subtitle: "Hario · Manual Brew",
+    price: "Rp 325.000",
+    image: "/images/hero.png",
+    href: "/review/hario-v60-ceramic",
+    badge: "Essential",
+    badgeTone: "neutral",
+  },
+  {
+    title: "Xiaomi Semi-automatic Espresso Machine",
+    subtitle: "Xiaomi · Espresso Machine",
+    price: "Rp 1.599.000",
+    image: "https://i02.appmifile.com/740_operator_sg/29/11/2024/932c4e57912a11f767d4d66241853186.jpg?f=webp",
+    href: "/review/xiaomi-espresso-machine",
+    badge: "Premium Pick",
+    badgeTone: "success",
+  },
+  {
+    title: "Comandante - Penggiling Kopi Manual",
+    subtitle: "Comandante · Hand Grinder",
+    price: "Rp 3.950.000",
+    image: "https://d8g5mz6srwlcs.cloudfront.net/original/6985747bf07c1345493425.jpg",
+    href: "/review/comandante-c40-mk4",
+  },
+];
+---
+
+<section class="ds-section ds-divider bg-white">
+  <Container>
+    <div class="mb-16 flex flex-col gap-6 md:mb-20 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-xl">
+        <span class="ds-kicker mb-3 block">Brewing Essentials</span>
+        <h2 class="font-display text-4xl font-semibold tracking-tight text-stone-900 md:text-5xl">
+          Alat Seduh <span class="text-stone-400">Rekomendasi.</span>
+        </h2>
+        <p class="mt-4 text-base text-stone-500 max-w-md">
+          Peralatan kurasi untuk mencapai konsistensi dan kejernihan rasa di setiap cangkir yang Anda seduh di rumah.
+        </p>
+      </div>
+        <a href="/best/kopi-arabika-terbaik" class="ds-link group">
+          Eksplor Semua Gear 
+          <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 md:gap-x-12 md:gap-y-16">
+      {gears.map((gear) => (
+        <EditorialCard {...gear} aspectRatio="square" />
+      ))}
+    </div>
+  </Container>
+</section>

@@ -7,6 +7,7 @@ interface Props {
   date?: string;
   image?: string;
   imageAlt?: string;
+  badge?: string;
 }
 
 const {
@@ -17,52 +18,65 @@ const {
   date,
   image,
   imageAlt = title,
+  badge,
 } = Astro.props;
 ---
 
-<article class="group flex flex-col gap-4">
-  <!-- Image -->
+<article class="group flex flex-col gap-5">
+
+  {/* Image */}
   {image && (
-    <a href={href} class="block overflow-hidden rounded-sm bg-stone-100 mb-2" tabindex="-1" aria-hidden="true">
+    <a
+      href={href}
+      class="block overflow-hidden rounded-xl border border-stone-100 bg-stone-50"
+      tabindex="-1"
+      aria-hidden="true"
+    >
       <img
         src={image}
         alt={imageAlt}
-        class="aspect-[3/2] w-full object-cover"
+        class="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         loading="lazy"
         decoding="async"
+        width="800"
+        height="533"
       />
     </a>
   )}
 
-  <!-- Meta -->
-  <div class="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-stone-400">
+  {/* Meta */}
+  <div class="flex items-center gap-2.5 text-xs font-medium uppercase tracking-[0.14em] text-stone-400">
     <span>{category}</span>
     {date && (
       <>
-        <span>·</span>
+        <span aria-hidden="true">·</span>
         <time datetime={date}>{date}</time>
       </>
     )}
   </div>
 
-  <!-- Title -->
-  <h3 class="font-display text-lg font-semibold leading-snug text-stone-900 md:text-xl">
-    <a href={href} class="hover:text-stone-600">
+  {/* Title */}
+  <h3 class="font-display text-lg font-semibold leading-[1.35] tracking-tight text-stone-900 md:text-xl">
+    <a
+      href={href}
+      class="hover:text-stone-600 transition-colors"
+    >
       {title}
     </a>
   </h3>
 
-  <!-- Excerpt -->
-  <p class="text-sm leading-relaxed text-stone-500 line-clamp-2">
+  {/* Excerpt */}
+  <p class="text-sm leading-[1.8] text-stone-500 line-clamp-3">
     {excerpt}
   </p>
 
-  <!-- Read link -->
+  {/* Read more */}
   <a
     href={href}
-    class="mt-1 text-sm font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900"
+    class="ds-link mt-auto w-fit"
     aria-label={`Baca artikel: ${title}`}
   >
-    Baca Artikel
+    Baca Artikel →
   </a>
+
 </article>

@@ -1,0 +1,145 @@
+---
+/**
+ * AffiliatePicks.astro
+ * Primary revenue section — top 3 curated beans with ranking, badges, and CTAs.
+ * This is the most conversion-critical section on the homepage.
+ */
+import Container from "../components/Container.astro";
+import Badge from "../components/ui/Badge.astro";
+import Button from "../components/ui/Button.astro";
+
+interface Pick {
+  rank: number;
+  title: string;
+  origin: string;
+  roast: string;
+  flavor: string;
+  price: string;
+  badge: string;
+  badgeTone?: "accent" | "neutral" | "success";
+  image: string;
+  href: string;
+  isTop?: boolean;
+}
+
+const picks: Pick[] = [
+  {
+    rank: 1,
+    title: "Sunda Kintamani",
+    origin: "Bali, Indonesia",
+    roast: "Light Roast",
+    flavor: "Orange · Honey · Floral",
+    price: "Rp 185.000",
+    badge: "Best Overall",
+    badgeTone: "accent",
+    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=600&auto=format&fit=crop",
+    href: "/review/kintamani-premium",
+    isTop: true,
+  },
+  {
+    rank: 2,
+    title: "Java Signature",
+    origin: "Java, Indonesia",
+    roast: "Medium Roast",
+    flavor: "Cocoa · Caramel · Stone Fruit",
+    price: "Rp 154.000",
+    badge: "Most Popular",
+    badgeTone: "neutral",
+    image: "/images/java_signature.jpeg",
+    href: "/review/java-signature",
+    isTop: false,
+  },
+  {
+    rank: 3,
+    title: "Bali Reserve",
+    origin: "Bali, Indonesia",
+    roast: "Dark Roast",
+    flavor: "Dark Chocolate · Walnut · Spice",
+    price: "Rp 192.000",
+    badge: "Best Premium",
+    badgeTone: "success",
+    image: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?q=80&w=600&auto=format&fit=crop",
+    href: "/best/kopi-arabika-terbaik",
+    isTop: false,
+  },
+];
+---
+
+<section class="ds-section ds-divider">
+  <Container>
+    <div class="flex flex-col gap-14">
+
+      {/* Section header */}
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <div class="mb-5">
+            <Badge label="Affiliate Picks" tone="accent" />
+          </div>
+          <h2 class="font-display text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
+            Rekomendasi Terbaik Kami
+          </h2>
+          <p class="mt-3 max-w-md text-base leading-relaxed text-stone-500">
+            Dipilih berdasarkan uji cita rasa, kualitas sangrai, dan kepuasan pelanggan nyata.
+          </p>
+        </div>
+        <a href="/best/kopi-arabika-terbaik" class="ds-link shrink-0">
+          Lihat Semua →
+        </a>
+      </div>
+
+      {/* Picks */}
+      <div class="flex flex-col gap-6">
+        {picks.map((pick) => (
+          <article class={`group relative flex flex-col gap-6 overflow-hidden rounded-2xl border p-6 transition-shadow duration-200 hover:shadow-sm sm:flex-row sm:items-center ${pick.isTop ? "border-stone-900 bg-stone-50" : "border-stone-100 bg-white"}`}>
+
+            {/* Rank */}
+            <div class="hidden shrink-0 items-center justify-center sm:flex">
+              <span class={`font-display text-5xl font-bold tabular-nums ${pick.isTop ? "text-stone-900" : "text-stone-200"}`}>
+                {String(pick.rank).padStart(2, "0")}
+              </span>
+            </div>
+
+            {/* Image */}
+            <a href={pick.href} class="block shrink-0 overflow-hidden rounded-xl" tabindex="-1" aria-hidden="true">
+              <img
+                src={pick.image}
+                alt={pick.title}
+                class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] sm:w-24 md:w-32"
+                loading="lazy"
+                decoding="async"
+                width="128"
+                height="128"
+              />
+            </a>
+
+            {/* Info */}
+            <div class="flex flex-1 flex-col gap-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <Badge label={pick.badge} tone={pick.badgeTone ?? "accent"} />
+                <span class="ds-kicker">{pick.origin}</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-stone-900 md:text-2xl">
+                <a href={pick.href} class="after:absolute after:inset-0 hover:text-stone-600 transition-colors">
+                  {pick.title}
+                </a>
+              </h3>
+              <div class="flex flex-wrap items-center gap-3 text-sm text-stone-400">
+                <span class="ds-chip">{pick.roast}</span>
+                <span class="text-stone-300">·</span>
+                <span class="text-stone-400">{pick.flavor}</span>
+              </div>
+            </div>
+
+            {/* Price + CTA */}
+            <div class="flex shrink-0 flex-row items-center gap-4 sm:flex-col sm:items-end">
+              <p class="font-display text-lg font-semibold text-orange-600">{pick.price}</p>
+              <Button href={pick.href} label="Cek Harga" variant={pick.isTop ? "primary" : "secondary"} />
+            </div>
+
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </Container>
+</section>

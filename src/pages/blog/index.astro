@@ -2,10 +2,13 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Container from "../../components/Container.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
+import Badge from "@/components/ui/Badge.astro";
 
 const articles = [
   {
     title: "Cara Menyeduh Kopi V60: Panduan Lengkap untuk Hasil Maksimal",
+    image: "/images/v60-brewing.png",
+    imageAlt: "Cara Menyeduh Kopi V60",
     description: "Pelajari teknik menyeduh kopi V60 yang benar untuk mengeluarkan profil rasa yang bersih, cerah, dan aromatik.",
     href: "/blog/cara-menyeduh-kopi-v60",
     date: "11 Mei 2026",
@@ -13,6 +16,8 @@ const articles = [
   },
   {
     title: "Perbedaan Kopi Arabika dan Robusta: Mana yang Lebih Cocok untuk Anda?",
+    image: "/images/arabica-vs-robusta.png",
+    imageAlt: "Perbedaan Kopi Arabica dan Robusta",
     description: "Pahami perbedaan mendasar antara kopi Arabika dan Robusta mulai dari rasa, kadar kafein, hingga harga.",
     href: "/blog/perbedaan-kopi-arabika-dan-robusta",
     date: "11 Mei 2026",
@@ -20,6 +25,8 @@ const articles = [
   },
   {
     title: "Cara Menyimpan Biji Kopi agar Tetap Segar Selama Berbulan-bulan",
+    image: "/images/coffee-storage.png",
+    imageAlt: "Cara Menyimpan Biji Kopi",
     description: "Jangan biarkan kopi mahal Anda menjadi apek. Ikuti panduan cara menyimpan biji kopi yang benar.",
     href: "/blog/cara-menyimpan-biji-kopi",
     date: "11 Mei 2026",
@@ -35,7 +42,9 @@ const articles = [
   <section class="py-24 md:py-36">
     <Container as="div">
       <header class="max-w-3xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-stone-400">Journal</p>
+        <div class="mb-5">
+          <Badge label="Journal" />
+        </div>
         <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
           Brewing Notes & Stories
         </h1>
@@ -47,8 +56,10 @@ const articles = [
       <div class="mt-20 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
           <ArticleCard
+            image={article.image}
+            imageAlt={article.imageAlt}
             title={article.title}
-            excerpt={article.description}
+            excerpt={article.description} 
             href={article.href}
             category={article.category}
             date={article.date}

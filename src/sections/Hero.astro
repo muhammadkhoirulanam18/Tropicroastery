@@ -3,44 +3,94 @@ import Container from "../components/Container.astro";
 import Badge from "../components/ui/Badge.astro";
 import Button from "../components/ui/Button.astro";
 
+interface Props {
+  badge?: string;
+  title?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
 const {
-  eyebrow = "Specialty coffee",
-  title = "Premium minimal coffee storefront for Tropic Roastery.",
-  description = "Clean layout, premium whitespace, and reusable product cards built to showcase beans, brewing, and brand story without heavy JavaScript.",
+  badge = "Specialty Coffee Roasters",
+  title = "Kopi yang Bercerita Tentang Asalnya.",
+  description = "Kami memilih, menyangrai, dan menyajikan biji kopi terbaik dari dataran tinggi Indonesia. Langsung ke tangan Anda — segar, bermakna, dan jujur.",
+  primaryLabel = "Lihat Koleksi Kopi",
   primaryHref = "/best/kopi-arabika-terbaik",
-  primaryLabel = "Cek Biji Kopi Terbaik",
-  secondaryHref = "#story",
-  secondaryLabel = "Brand Story",
+  secondaryLabel = "Baca Journal",
+  secondaryHref = "/blog",
+  imageSrc = "/images/hero.png",
+  imageAlt = "Editorial coffee setup dengan manual brew dan biji kopi pilihan",
 } = Astro.props;
 
 const stats = [
-  { value: "12+", label: "Single origin" },
-  { value: "48h", label: "Fresh roast" },
-  { value: "4.9", label: "Avg rating" },
+  { value: "12+", label: "Single Origin" },
+  { value: "48h", label: "Fresh Roast" },
+  { value: "4.9★", label: "Avg. Rating" },
 ];
 ---
 
-<section class="ds-section">
-  <Container as="div" class="text-center">
-    <Badge label={eyebrow} />
-    <h1 class="ds-heading mx-auto mt-8 max-w-4xl md:leading-tight">
-      {title}
-    </h1>
-    <p class="ds-subheading mx-auto mt-5 max-w-2xl">
-      {description}
-    </p>
-    <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-      <Button href={primaryHref} label={primaryLabel} variant="primary" />
-      <Button href={secondaryHref} label={secondaryLabel} variant="secondary" />
-    </div>
+<section class="ds-section overflow-hidden">
+  <Container>
+    <div class="grid items-center gap-16 md:grid-cols-2 lg:gap-24">
 
-    <div class="mt-12 grid gap-4 sm:grid-cols-3">
-      {stats.map((stat) => (
-        <div class="ds-surface px-6 py-5 text-left">
-          <p class="text-2xl font-semibold tracking-tight text-neutral-900">{stat.value}</p>
-          <p class="mt-1 text-sm text-neutral-500">{stat.label}</p>
+      {/* ── Left: Content ── */}
+      <div class="order-2 flex flex-col items-start md:order-1">
+
+        {badge && (
+          <div class="mb-5">
+            <Badge label={badge} />
+          </div>
+        )}
+
+        <h1 class="font-display text-[2.6rem] font-bold leading-[1.08] tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
+          {title}
+        </h1>
+
+        <p class="mt-7 max-w-md text-base leading-[1.85] text-stone-500 md:text-lg">
+          {description}
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <Button href={primaryHref} label={primaryLabel} variant="primary" />
+          {secondaryLabel && (
+            <Button href={secondaryHref} label={secondaryLabel} variant="secondary" />
+          )}
         </div>
-      ))}
+
+        {/* Trust signals */}
+        <div class="mt-14 flex items-center gap-8 border-t border-stone-100 pt-8">
+          {stats.map((stat, i) => (
+            <>
+              {i > 0 && <div class="h-7 w-px bg-stone-100" />}
+              <div>
+                <p class="font-display text-xl font-semibold text-orange-600">{stat.value}</p>
+                <p class="mt-0.5 text-xs uppercase tracking-widest text-stone-500">{stat.label}</p>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Right: Image ── */}
+      <div class="order-1 md:order-2">
+        <div class="overflow-hidden rounded-2xl border border-stone-100 bg-stone-50">
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            class="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-[1.03] md:aspect-square lg:aspect-[4/5]"
+            loading="eager"
+            decoding="async"
+            width="400"
+            height="600"
+          />
+        </div>
+      </div>
+
     </div>
   </Container>
 </section>

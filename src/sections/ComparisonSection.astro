@@ -1,0 +1,200 @@
+---
+/**
+ * ComparisonSection.astro
+ * Premium editorial comparison section for Tropic Roastery homepage.
+ * Optimized for SEO traffic and high affiliate CTR.
+ * 
+ * Feel: Calm, spacious, typography-focused, editorial, minimal.
+ */
+import Container from "../components/Container.astro";
+import Badge from "../components/ui/Badge.astro";
+import Button from "../components/ui/Button.astro";
+
+interface Product {
+  name: string;
+  badge: string;
+  badgeTone: "accent" | "neutral" | "success";
+  bestFor: string;
+  advantage: string;
+  price: string;
+  rating: string;
+  image: string;
+  href: string;
+  isTop?: boolean;
+}
+
+const products: Product[] = [
+  {
+    name: "Comandante C40 MK4",
+    badge: "Best Overall",
+    badgeTone: "accent",
+    bestFor: "Manual brewing presisi tinggi & penikmat kopi profesional",
+    advantage: "Nitro Blade steel burrs, kejernihan rasa luar biasa, daya tahan seumur hidup",
+    price: "Rp 3.950.000",
+    rating: "5.0",
+    image: "https://d8g5mz6srwlcs.cloudfront.net/original/6985747bf07c1345493425.jpg",
+    href: "/review/comandante-c40-mk4",
+    isTop: true,
+  },
+  {
+    name: "Fellow Stagg EKG",
+    badge: "Best Premium",
+    badgeTone: "success",
+    bestFor: "Metode seduh pour-over & kontrol temperatur presisi",
+    advantage: "Gooseneck spout sangat stabil, kontrol suhu digital per derajat, desain minimalis",
+    price: "Rp 2.950.000",
+    rating: "4.8",
+    image: "https://images.unsplash.com/photo-1592417766326-088bf3da80c5?auto=format&fit=crop&w=800&q=75&fm=webp",
+    href: "/review/fellow-stagg-ekg",
+    isTop: false,
+  },
+  {
+    name: "Timemore Chestnut C3",
+    badge: "Best Budget",
+    badgeTone: "neutral",
+    bestFor: "Pemula seduh manual & budget-conscious enthusiast",
+    advantage: "Burr stainless steel S2C, gilingan konsisten di kelasnya, bodi aluminium kokoh",
+    price: "Rp 780.000",
+    rating: "4.7",
+    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=75&fm=webp",
+    href: "/review/timemore-c3",
+    isTop: false,
+  }
+];
+---
+
+<section class="ds-section ds-divider bg-white" aria-labelledby="comparison-heading">
+  <Container>
+    <div class="mb-12 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-xl">
+        <span class="ds-kicker mb-3 block">Gear Battle</span>
+        <h2 id="comparison-heading" class="font-display text-4xl font-semibold tracking-tight text-stone-900 md:text-5xl">
+          Perbandingan <span class="text-stone-400 font-normal">Coffee Gear.</span>
+        </h2>
+        <p class="mt-4 text-base text-stone-500 leading-relaxed">
+          Ulasan komparatif peralatan seduh terbaik untuk membantu Anda menentukan investasi kopi berikutnya secara tepat.
+        </p>
+      </div>
+      <a href="/best/kopi-arabika-terbaik" class="ds-link group shrink-0">
+        Eksplor Semua Panduan
+        <span class="inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    {/* Desktop View: Elegant comparison table */}
+    <div class="hidden md:block overflow-hidden rounded-2xl border border-stone-200 bg-white">
+      <table class="w-full text-left border-collapse table-auto">
+        <thead>
+          <tr class="border-b border-stone-200 bg-stone-50/50">
+            <th scope="col" class="py-5 px-6 text-[11px] font-semibold uppercase tracking-wider text-stone-400 w-1/4">Product</th>
+            <th scope="col" class="py-5 px-6 text-[11px] font-semibold uppercase tracking-wider text-stone-400 w-1/4">Best For</th>
+            <th scope="col" class="py-5 px-6 text-[11px] font-semibold uppercase tracking-wider text-stone-400 w-1/4">Advantage</th>
+            <th scope="col" class="py-5 px-6 text-[11px] font-semibold uppercase tracking-wider text-stone-400 w-1/12">Price</th>
+            <th scope="col" class="py-5 px-6 text-[11px] font-semibold uppercase tracking-wider text-stone-400 w-1/12">Rating</th>
+            <th scope="col" class="py-5 px-6 text-[11px] font-semibold uppercase tracking-wider text-stone-400 w-1/8 text-right"></th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-stone-100">
+          {products.map((product) => (
+            <tr class={`transition-colors duration-150 ${product.isTop ? 'bg-stone-50/40 hover:bg-stone-50' : 'hover:bg-stone-50/20'}`}>
+              <td class="py-6 px-6">
+                <div class="flex items-center gap-4">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    class="h-16 w-16 rounded-xl object-cover border border-stone-100 shrink-0"
+                    loading="lazy"
+                    width="64"
+                    height="64"
+                  />
+                  <div>
+                    <div class="mb-1.5">
+                      <Badge label={product.badge} tone={product.badgeTone} />
+                    </div>
+                    <h3 class="font-display font-semibold text-stone-900 text-base">{product.name}</h3>
+                  </div>
+                </div>
+              </td>
+              <td class="py-6 px-6 text-sm text-stone-600 leading-relaxed">
+                {product.bestFor}
+              </td>
+              <td class="py-6 px-6 text-sm text-stone-500 leading-relaxed">
+                {product.advantage}
+              </td>
+              <td class="py-6 px-6 font-display font-medium text-stone-900 text-sm whitespace-nowrap">
+                {product.price}
+              </td>
+              <td class="py-6 px-6">
+                <div class="flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-amber-500 fill-current shrink-0" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <span class="text-sm font-semibold text-stone-900 font-display">{product.rating}</span>
+                </div>
+              </td>
+              <td class="py-6 px-6 text-right whitespace-nowrap">
+                <Button href={product.href} label="Lihat Detail" variant={product.isTop ? 'primary' : 'secondary'} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {/* Mobile View: Stacked comparison cards */}
+    <div class="flex flex-col gap-6 md:hidden">
+      {products.map((product) => (
+        <div class={`rounded-2xl border p-6 flex flex-col gap-5 relative transition-all duration-200 ${product.isTop ? 'border-stone-900 bg-stone-50/50 shadow-sm' : 'border-stone-100 bg-white'}`}>
+          {product.isTop && (
+            <div class="absolute -top-3.5 left-6">
+              <span class="bg-stone-900 text-white text-[10px] uppercase font-bold tracking-wider px-3.5 py-1 rounded-full">
+                Top Pick
+              </span>
+            </div>
+          )}
+          
+          <div class="flex items-center gap-4 border-b border-stone-100 pb-4">
+            <img
+              src={product.image}
+              alt={product.name}
+              class="h-16 w-16 rounded-xl object-cover border border-stone-100 shrink-0"
+              loading="lazy"
+              width="64"
+              height="64"
+            />
+            <div>
+              <div class="mb-1 flex items-center gap-2.5">
+                <Badge label={product.badge} tone={product.badgeTone} />
+                <div class="flex items-center gap-1">
+                  <svg class="h-3.5 w-3.5 text-amber-500 fill-current shrink-0" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <span class="text-xs font-semibold text-stone-900 font-display">{product.rating}</span>
+                </div>
+              </div>
+              <h3 class="font-display font-semibold text-stone-900 text-base">{product.name}</h3>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-sm text-stone-600">
+            <div>
+              <span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400 block mb-1">Best For</span>
+              <p class="text-stone-700 leading-relaxed">{product.bestFor}</p>
+            </div>
+            <div>
+              <span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400 block mb-1">Advantage</span>
+              <p class="text-stone-700 leading-relaxed">{product.advantage}</p>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+              <div>
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400 block mb-0.5">Price</span>
+                <p class="font-display font-semibold text-orange-600 text-base">{product.price}</p>
+              </div>
+              <Button href={product.href} label="Lihat Detail" variant={product.isTop ? 'primary' : 'secondary'} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,86 @@
+---
+/**
+ * BrewingGuideHighlight.astro
+ * Editorial two-column highlight for a featured brewing guide article.
+ * Left: large image. Right: kicker, title, excerpt, CTA.
+ * 
+ * NOTE: Jika gambar tidak termuat, kemungkinan besar karena:
+ * 1. Path di `imageSrc` harus diawali dengan forward slash (/) agar merujuk ke folder `public`.
+ * 2. File `v60.jpg` mungkin memiliki ekstensi berbeda (seperti .JPG atau .png) yang sensitif di environment tertentu.
+ * 3. File di folder `public` tidak diproses oleh Image Service Astro; disarankan memindahkan ke `src/assets`
+ *    dan menggunakan komponen `<Image />` untuk optimasi otomatis.
+ */
+import Container from "../components/Container.astro";
+import Badge from "../components/ui/Badge.astro";
+
+interface Props {
+  badge?: string;
+  title?: string;
+  excerpt?: string;
+  href?: string;
+  ctaLabel?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+const {
+  badge = "Brewing Guide",
+  title = "Cara Menyeduh V60 yang Benar: Dari Grinding hingga Menuang",
+  excerpt = "V60 adalah metode seduh yang menghasilkan rasa paling jernih dan kompleks. Tapi ada satu kesalahan kecil yang sering diabaikan — dan itu mengubah segalanya.",
+  href = "/blog/cara-menyeduh-kopi-v60",
+  ctaLabel = "Baca Panduan Lengkap",
+  imageSrc = "https://unsplash.com/photos/person-pouring-coffee-on-white-ceramic-mug-iweAJreEerQ",
+  imageAlt = "Menyeduh kopi V60 dengan teknik pour-over",
+} = Astro.props;
+---
+
+<section class="ds-section ds-divider">
+  <Container>
+    <div class="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
+
+      {/* Image */}
+      <div class="overflow-hidden rounded-2xl border border-stone-100 bg-stone-50">
+        <a href={href} tabindex="-1" aria-hidden="true">
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            class="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+            loading="lazy"
+            decoding="async"
+            width="800"
+            height="600"
+          />
+        </a>
+      </div>
+
+      {/* Content */}
+      <div class="flex flex-col items-start">
+        <div class="mb-5">
+          <Badge label={badge} />
+        </div>
+
+        <h2 class="font-display text-3xl font-bold leading-[1.15] tracking-tight text-stone-900 md:text-4xl">
+          <a href={href} class="hover:text-stone-600 transition-colors">
+            {title}
+          </a>
+        </h2>
+
+        <p class="mt-6 text-base leading-[1.85] text-stone-500">
+          {excerpt}
+        </p>
+
+        <a href={href} class="ds-button-primary mt-10">
+          {ctaLabel}
+        </a>
+
+        {/* Brewing techniques list — editorial detail */}
+        <div class="mt-10 flex flex-wrap gap-2 border-t border-stone-100 pt-8">
+          {["V60", "Chemex", "Aeropress", "Cold Brew"].map((method) => (
+            <span class="ds-chip">{method}</span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </Container>
+</section>

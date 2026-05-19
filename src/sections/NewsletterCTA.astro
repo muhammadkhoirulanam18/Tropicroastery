@@ -1,0 +1,79 @@
+---
+/**
+ * NewsletterCTA.astro
+ * Final homepage conversion section — minimal, clear, no heavy design.
+ * Affiliate rule: CTA text variants → "Cek Harga" / "Lihat Detail" / "Beli Sekarang"
+ * Newsletter variant: "Bergabung" — acceptable as it drives engagement (indirect conversion).
+ */
+import Container from "../components/Container.astro";
+import Badge from "../components/ui/Badge.astro";
+
+interface Props {
+  // kicker?: string;
+  badge?: string;
+  title?: string;
+  description?: string;
+  placeholder?: string;
+  ctaLabel?: string;
+  finePrint?: string;
+}
+
+const {
+  // kicker = "Newsletter",
+  badge = "Newsletter",
+  title = "Kopi & Cerita, Langsung ke Inbox Anda.",
+  description = "Tips seduh mingguan, origin baru yang kami temukan, dan rekomendasi jujur — tanpa spam.",
+  placeholder = "alamat email Anda",
+  ctaLabel = "Bergabung",
+  finePrint = "Gratis. Bisa berhenti kapan saja.",
+} = Astro.props;
+---
+
+<section class="ds-section ds-divider">
+  <Container>
+    <div class="mx-auto max-w-2xl text-center">
+
+      <div class="mb-5">
+        <Badge label={badge} />
+      </div>
+
+      <h2 class="font-display text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
+        {title}
+      </h2>
+
+      <p class="mt-5 text-base leading-relaxed text-stone-500">
+        {description}
+      </p>
+
+      {/* Form — no JS, Netlify / WP form endpoint */}
+      <form
+        class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center"
+        method="POST"
+        action="/api/newsletter"
+        aria-label="Newsletter signup form"
+      >
+        <label for="newsletter-email" class="sr-only">Alamat email</label>
+        <input
+          id="newsletter-email"
+          type="email"
+          name="email"
+          required
+          placeholder={placeholder}
+          class="w-full rounded-full border border-stone-200 bg-white px-5 py-3 text-sm text-stone-800 placeholder-stone-400 outline-none ring-0 transition focus:border-stone-400 sm:w-72"
+          autocomplete="email"
+        />
+        <button
+          type="submit"
+          class="ds-button-primary shrink-0"
+        >
+          {ctaLabel}
+        </button>
+      </form>
+
+      {finePrint && (
+        <p class="mt-5 text-xs text-stone-400">{finePrint}</p>
+      )}
+
+    </div>
+  </Container>
+</section>

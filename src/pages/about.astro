@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/Container.astro";
 import Badge from "../components/ui/Badge.astro";
+import FeaturedArticlesSection from "@/sections/FeaturedArticlesSection.astro";
 ---
 
 <MainLayout 
@@ -11,7 +12,7 @@ import Badge from "../components/ui/Badge.astro";
   <section class="py-24 md:py-36">
     <Container as="div" narrow>
       <header class="space-y-6">
-        <Badge label="Our Story" tone="neutral" />
+        <Badge label="Our Story" tone="primary" />
         <h1 class="font-display text-4xl font-bold tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
           Dedikasi untuk Kopi Nusantara.
         </h1>
@@ -27,7 +28,7 @@ import Badge from "../components/ui/Badge.astro";
         
         <div class="aspect-[16/9] overflow-hidden rounded-3xl bg-stone-100">
           <img 
-            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80&fm=webp" 
+            src="/images/about-story.jpeg" 
             alt="Biji kopi yang sedang disangrai" 
             class="h-full w-full object-cover"
           />
@@ -58,4 +59,9 @@ import Badge from "../components/ui/Badge.astro";
       </div>
     </Container>
   </section>
+
+  {/* Featured */}
+  <div class="mt-12">
+    <FeaturedArticlesSection />
+  </div>
 </MainLayout>
