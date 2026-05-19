@@ -1,0 +1,64 @@
+---
+/**
+ * CoffeeBeansSection.astro
+ * Premium editorial section for coffee bean recommendations.
+ * Feel: Warm, organic, sensory.
+ */
+import Container from "../components/Container.astro";
+import EditorialCard from "../components/EditorialCard.astro";
+
+const beans = [
+  {
+    title: "Sunda Kintamani",
+    subtitle: "Bali · Light Roast",
+    price: "Rp 185.000",
+    image: "https://images.unsplash.com/photo-1605711599412-775918dbe770?q=80&w=951&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    href: "/review/kintamani-premium",
+    badge: "Best Choice",
+    badgeTone: "accent",
+  },
+  {
+    title: "Java Signature",
+    subtitle: "West Java · Medium Roast",
+    price: "Rp 154.000",
+    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=800&auto=format&fit=crop",
+    href: "/review/java-signature",
+    badge: "Most Popular",
+  },
+  {
+    title: "Toraja Sapan",
+    subtitle: "Sulawesi · Dark Roast",
+    price: "Rp 172.000",
+    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=800&auto=format&fit=crop",
+    href: "/review/toraja-sapan",
+  },
+];
+---
+
+<section class="ds-section bg-[#FDFCFB]">
+  <Container>
+    <div class="mb-16 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <span class="ds-kicker mb-4 block">The Roastery Selection</span>
+        <h2 class="font-display text-4xl font-light tracking-tight text-stone-900 md:text-5xl lg:text-6xl">
+          Biji Kopi <span class="italic font-serif">Terbaik</span> Musim Ini.
+        </h2>
+      </div>
+      <div class="flex flex-col items-start gap-6 md:items-end">
+        <p class="max-w-xs text-sm leading-relaxed text-stone-500">
+          Kurasi biji kopi single-origin pilihan dari petani lokal Indonesia dengan profil rasa yang unik dan autentik.
+        </p>
+        <a href="/best/kopi-arabika-terbaik" class="ds-link group">
+          Eksplor Koleksi Lengkap 
+          <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 md:gap-x-16 md:gap-y-20">
+      {beans.map((bean) => (
+        <EditorialCard {...bean} aspectRatio="portrait" />
+      ))}
+    </div>
+  </Container>
+</section>

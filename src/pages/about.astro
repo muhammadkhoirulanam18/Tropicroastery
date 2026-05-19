@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Container from "../components/Container.astro";
 import Badge from "../components/ui/Badge.astro";
+import FeaturedArticlesSection from "@/sections/FeaturedArticlesSection.astro";
 ---
 
 <MainLayout 
@@ -58,4 +59,9 @@ import Badge from "../components/ui/Badge.astro";
       </div>
     </Container>
   </section>
+
+  {/* Featured */}
+  <div class="mt-12">
+    <FeaturedArticlesSection />
+  </div>
 </MainLayout>

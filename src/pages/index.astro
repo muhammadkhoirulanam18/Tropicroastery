@@ -4,7 +4,9 @@ import Hero from "../sections/Hero.astro";
 import FeaturedArticlesSection from "../sections/FeaturedArticlesSection.astro";
 import CategoriesSection from "../sections/CategoriesSection.astro";
 import BrewingGuideHighlight from "../sections/BrewingGuideHighlight.astro";
-import AffiliatePicks from "../sections/AffiliatePicks.astro";
+import CoffeeBeansSection from "../sections/CoffeeBeansSection.astro";
+import CoffeeGearSection from "../sections/CoffeeGearSection.astro";
+import ComparisonSection from "../sections/ComparisonSection.astro";
 import RoasteryStory from "../sections/RoasteryStory.astro";
 import NewsletterCTA from "../sections/NewsletterCTA.astro";
 ---
@@ -16,20 +18,23 @@ import NewsletterCTA from "../sections/NewsletterCTA.astro";
   {/* 1. Hero — establish brand + primary CTA */}
   <Hero />
 
-  {/* 2. Featured Journal — attract SEO traffic, link to /best & /review */}
-  <FeaturedArticlesSection />
+  {/* 2. Coffee Gear — technical precision showcase */}
+  <CoffeeGearSection />
 
-  {/* 3. Categories — navigation into product funnel */}
+  {/* 2.5. Comparison Section — editorial gear matchup for affiliate CTR */}
+  <ComparisonSection />
+
+  {/* 3. Coffee Beans — curated sensory experience */}
+  <CoffeeBeansSection />
+
+  {/* 4. Categories — navigation into product funnel */}
   <CategoriesSection />
 
-  {/* 4. Brewing Guide Highlight — editorial value content */}
-  <BrewingGuideHighlight />
-
-  {/* 5. Affiliate Picks — primary revenue section */}
-  <AffiliatePicks />
-
-  {/* 6. Roastery Story — brand trust, links to /about */}
+  {/* 5. Roastery Story — brand trust, links to /about */}
   <RoasteryStory />
+
+  {/* 6. Featured Journal — attract SEO traffic, link to /best & /review */}
+  <FeaturedArticlesSection />
 
   {/* 7. Newsletter CTA — engagement + retention */}
   <NewsletterCTA />
